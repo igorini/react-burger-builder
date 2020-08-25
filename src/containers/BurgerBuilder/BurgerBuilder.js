@@ -3,10 +3,10 @@ import Burger from '../../components/Burger/Burger'
 
 const BurgerBuilder = () => {
   const [ingredients, setIngredients] = useState({
-    salad: 1,
-    bacon: 1,
-    cheese: 2,
-    meat: 2
+    salad: 0,
+    bacon: 0,
+    cheese: 0,
+    meat: 0
   });
 
   return (
