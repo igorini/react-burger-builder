@@ -1,9 +1,5 @@
 import React from 'react';
-import styled from "styled-components";
-
-const Content = styled.main`
-  margin-top: 16px;
-`;
+import {Content} from './styled';
 
 const layout = props => (
   <>
