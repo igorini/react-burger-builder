@@ -21,4 +21,10 @@ export const Toolbar = styled.header`
 
 export const Logo = styled.div`
   height: 80%
+`
+
+export const DesktopOnly = styled.nav`
+  @media (max-width: 499px) {
+    display: none;
+  }
 `;

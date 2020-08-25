@@ -9,9 +9,9 @@ const toolbar = () => (
     <Styled.Logo>
       <Logo/>
     </Styled.Logo>
-    <nav>
+    <Styled.DesktopOnly>
       <NavigationItems/>
-    </nav>
+    </Styled.DesktopOnly>
   </Styled.Toolbar>
 );
 

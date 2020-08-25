@@ -2,16 +2,16 @@ import styled from "styled-components";
 
 export const NavigationItem = styled.li`
   margin: 10px 0;
+  box-sizing: border-box;
   display: block;
   width: 100%;
   
   & a {
-    color: #8F5C2C;
+    color: ${props => props.active ? "#40A4C8" : "#8F5C2C"};
     text-decoration: none;
     width: 100%;
     box-sizing: border-box;
     display: block;
-    background-color: ${props => props.active ? "#8F5C2C" : ""};
   }
   
   & a:hover, a:active, a.active {

@@ -3,7 +3,7 @@ import * as Styled from './styled';
 
 const navigationItem = props => (
   <Styled.NavigationItem active={props.active}>
-    <a href={props.link}>{props.children}</a>
+    <strong><a href={props.link}>{props.children}</a></strong>
   </Styled.NavigationItem>
 );
 
