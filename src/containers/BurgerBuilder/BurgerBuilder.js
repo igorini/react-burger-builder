@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
+import Modal from '../../components/UI/Modal/Modal';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
 const INGREDIENT_PRICES = {
   salad: 0.1,
@@ -23,7 +25,7 @@ const BurgerBuilder = () => {
   const updatePurchasable = ingredients => {
     const ingredientSum = Object.keys(ingredients)
       .map(key => ingredients[key])
-      .reduce((sum, el) => sum+el, 0);
+      .reduce((sum, el) => sum + el, 0);
     setPurchasable(ingredientSum > 0);
   }
 
@@ -40,7 +42,9 @@ const BurgerBuilder = () => {
     const updatedIngredients = {...ingredients};
     updatedIngredients[type] = ingredients[type] - 1;
 
-    if (updatedIngredients[type] < 0) { return }
+    if (updatedIngredients[type] < 0) {
+      return
+    }
 
     setIngredients(updatedIngredients);
 
@@ -57,6 +61,9 @@ const BurgerBuilder = () => {
 
   return (
     <>
+      <Modal>
+        <OrderSummary ingredients={ingredients}/>
+      </Modal>
       <Burger ingredients={ingredients}/>
       <BuildControls
         ingredientAdded={addIngredientHandler}
