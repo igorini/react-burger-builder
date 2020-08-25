@@ -18,7 +18,9 @@ const buildControls = props => (
       added={() => props.ingredientAdded(ctrl.type)}
       removed={() => props.ingredientRemoved(ctrl.type)}
       disabled={props.disabled[ctrl.type]}/>)}
-    <Styled.OrderButton disabled={!props.purchasable}>Order Now</Styled.OrderButton>
+    <Styled.OrderButton
+      disabled={!props.purchasable}
+      onClick={props.orderNowClicked}>Order Now</Styled.OrderButton>
   </Styled.BuildControls>
 );
 
