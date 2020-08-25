@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Burger = styled.main`
+export const Burger = styled.div`
   width: 100%;
   margin: auto;
   height: 250px;
