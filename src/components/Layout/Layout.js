@@ -1,9 +1,10 @@
 import React from 'react';
 import * as Styled from './styled';
+import Toolbar from '../Navigation/Toolbar/Toolbar';
 
 const layout = props => (
   <>
-    <div>Toolbar, SideDrawer, Backdrop</div>
+    <Toolbar/>
     <Styled.Content>
       {props.children}
     </Styled.Content>
