@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 
 const ingredientSwitch = type => ({
   'bread-bottom': <BreadBottom/>,
-  'bread-top':
+  'bread-top'   :
     <BreadTop>
       <Seeds1/>
       <Seeds2/>
     </BreadTop>,
-  'meat': <Meat/>,
-  'cheese': <Cheese/>,
-  'bacon': <Bacon/>,
-  'salad': <Salad/>
+  'meat'        : <Meat/>,
+  'cheese'      : <Cheese/>,
+  'bacon'       : <Bacon/>,
+  'salad'       : <Salad/>
 })[type];
 
 const burgerIngredient = props => ingredientSwitch(props.type);
