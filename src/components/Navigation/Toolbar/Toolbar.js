@@ -1,10 +1,11 @@
 import React from 'react';
 import * as Styled from './styled';
+import Logo from '../../Logo/Logo';
 
-const toolbar = props => (
+const toolbar = () => (
   <Styled.Toolbar>
     <div>MENU</div>
-    <div>LOGO</div>
+    <Logo/>
     <nav>
       ...
     </nav>
