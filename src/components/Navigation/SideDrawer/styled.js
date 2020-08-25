@@ -19,4 +19,8 @@ export const SideDrawer = styled.div`
   @media(min-width: 500px) {
     display: none;
   }
+`
+
+export const Logo = styled.div`
+  height: 11%;
 `;

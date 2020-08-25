@@ -17,4 +17,8 @@ export const Toolbar = styled.header`
   &nav {
     height: 100%;
   }
+`
+
+export const Logo = styled.div`
+  height: 80%
 `;

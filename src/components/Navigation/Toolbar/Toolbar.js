@@ -6,7 +6,9 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 const toolbar = () => (
   <Styled.Toolbar>
     <div>MENU</div>
-    <Logo/>
+    <Styled.Logo>
+      <Logo/>
+    </Styled.Logo>
     <nav>
       <NavigationItems/>
     </nav>

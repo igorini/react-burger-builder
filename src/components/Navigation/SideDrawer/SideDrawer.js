@@ -5,7 +5,9 @@ import * as Styled from './styled';
 
 const sideDrawer = () => (
   <Styled.SideDrawer>
-    <Logo/>
+    <Styled.Logo>
+      <Logo/>
+    </Styled.Logo>
     <nav>
       <NavigationItems/>
     </nav>
