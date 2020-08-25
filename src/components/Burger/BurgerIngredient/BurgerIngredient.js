@@ -1,18 +1,18 @@
 import React from 'react';
-import {Bacon, BreadBottom, BreadTop, Cheese, Meat, Salad, Seeds1, Seeds2} from './styled';
+import * as Styled from './styled';
 import PropTypes from 'prop-types';
 
 const ingredientSwitch = type => ({
-  'bread-bottom': <BreadBottom/>,
+  'bread-bottom': <Styled.BreadBottom/>,
   'bread-top'   :
-    <BreadTop>
-      <Seeds1/>
-      <Seeds2/>
-    </BreadTop>,
-  'meat'        : <Meat/>,
-  'cheese'      : <Cheese/>,
-  'bacon'       : <Bacon/>,
-  'salad'       : <Salad/>
+    <Styled.BreadTop>
+      <Styled.Seeds1/>
+      <Styled.Seeds2/>
+    </Styled.BreadTop>,
+  'meat'        : <Styled.Meat/>,
+  'cheese'      : <Styled.Cheese/>,
+  'bacon'       : <Styled.Bacon/>,
+  'salad'       : <Styled.Salad/>
 })[type];
 
 const burgerIngredient = props => ingredientSwitch(props.type);

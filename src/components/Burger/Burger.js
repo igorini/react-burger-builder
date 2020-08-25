@@ -1,14 +1,22 @@
 import React from 'react';
-import {Burger} from "./styled";
+import * as Styled from "./styled";
 import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
 
-const burger = () => (
-  <Burger>
-    <BurgerIngredient type="bread-top"/>
-    <BurgerIngredient type="cheese"/>
-    <BurgerIngredient type="meat"/>
-    <BurgerIngredient type="bread-bottom"/>
-  </Burger>
-);
+const burger = props => {
+  const transformedIngredients = Object.keys(props.ingredients)
+    .map(ingredientKey =>
+      [...Array(props.ingredients[ingredientKey])].map((_, i) =>
+        <BurgerIngredient key={ingredientKey + i} type={ingredientKey}/>
+      )
+    )
+
+  return (
+    <Styled.Burger>
+      <BurgerIngredient type="bread-top"/>
+      {transformedIngredients}
+      <BurgerIngredient type="bread-bottom"/>
+    </Styled.Burger>
+  );
+}
 
 export default burger;
