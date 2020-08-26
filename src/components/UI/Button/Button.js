@@ -10,8 +10,6 @@ const StyledColoredButton = styled(Styled.Button)`
 `;
 
 const button = props => {
-  console.log(props);
-
   return (
     <StyledColoredButton onClick={props.clicked} btnType={props.btnType}>
       {props.children}

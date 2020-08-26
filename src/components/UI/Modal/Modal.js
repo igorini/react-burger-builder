@@ -2,7 +2,7 @@ import React from 'react';
 import * as Styled from './styled';
 import Backdrop from '../Backdrop/Backdrop';
 
-const modal = props => (
+const Modal = props => (
   <>
     <Backdrop show={props.show} clicked={props.modalClosed}/>
     <Styled.Modal style={{
@@ -14,4 +14,6 @@ const modal = props => (
   </>
 );
 
-export default modal;
+const areEqual = (prevProps, nextProps) => prevProps.show === nextProps.show;
+
+export default React.memo(Modal, areEqual);
