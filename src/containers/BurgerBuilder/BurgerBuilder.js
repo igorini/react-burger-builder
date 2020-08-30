@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
@@ -15,17 +15,18 @@ const INGREDIENT_PRICES = {
 };
 
 const BurgerBuilder = () => {
-  const [ingredients, setIngredients] = useState({
-    salad: 0,
-    bacon: 0,
-    cheese: 0,
-    meat: 0
-  });
-
+  const [ingredients, setIngredients] = useState(null);
   const [totalPrice, setTotalPrice] = useState(0.2);
   const [purchasable, setPurchasable] = useState(false);
   const [purchasing, setPurchasing] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    axios.get('/ingredients.json')
+      .then(response => setIngredients(response.data))
+      .catch(() => setError(true));
+  }, []);
 
   const updatePurchasable = ingredients => {
     const ingredientSum = Object.keys(ingredients)
@@ -92,18 +93,17 @@ const BurgerBuilder = () => {
   for (let key in disabledInfo) {
     disabledInfo[key] = disabledInfo[key] <= 0;
   }
-  const orderSummary = loading ? <Spinner/> :
-    <OrderSummary
-    ingredients={ingredients}
-    price={totalPrice}
-    purchaseCancelled={purchaseCancelHandler}
-    purchaseContinued={purchaseContinueHandler}/>;
 
-  return (
+  const orderSummary = loading || !ingredients ? <Spinner/> :
+    <OrderSummary
+      ingredients={ingredients}
+      price={totalPrice}
+      purchaseCancelled={purchaseCancelHandler}
+      purchaseContinued={purchaseContinueHandler}/>;
+
+  const burger = error ? <p>Ingredients can't be loaded.</p> : (
+    ingredients ? (
     <>
-      <Modal show={purchasing} modalClosed={purchaseCancelHandler}>
-        {orderSummary}
-      </Modal>
       <Burger ingredients={ingredients}/>
       <BuildControls
         ingredientAdded={addIngredientHandler}
@@ -112,6 +112,14 @@ const BurgerBuilder = () => {
         price={totalPrice}
         purchasable={purchasable}
         orderNowClicked={orderNowHandler}/>
+    </>) : <Spinner/>);
+
+  return (
+    <>
+      <Modal show={purchasing} modalClosed={purchaseCancelHandler}>
+        {orderSummary}
+      </Modal>
+      {burger}
     </>
   );
 };
