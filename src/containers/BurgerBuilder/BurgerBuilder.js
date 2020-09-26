@@ -10,7 +10,7 @@ import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 const INGREDIENT_PRICES = {
   salad: 0.1,
   cheese: 0.2,
-  meat: 0.5,
+  meat: 0.4,
   bacon: 0.3
 };
 
@@ -103,16 +103,16 @@ const BurgerBuilder = () => {
 
   const burger = error ? <p>Ingredients can't be loaded.</p> : (
     ingredients ? (
-    <>
-      <Burger ingredients={ingredients}/>
-      <BuildControls
-        ingredientAdded={addIngredientHandler}
-        ingredientRemoved={removeIngredientHandler}
-        disabled={disabledInfo}
-        price={totalPrice}
-        purchasable={purchasable}
-        orderNowClicked={orderNowHandler}/>
-    </>) : <Spinner/>);
+      <>
+        <Burger ingredients={ingredients}/>
+        <BuildControls
+          ingredientAdded={addIngredientHandler}
+          ingredientRemoved={removeIngredientHandler}
+          disabled={disabledInfo}
+          price={totalPrice}
+          purchasable={purchasable}
+          orderNowClicked={orderNowHandler}/>
+      </>) : <Spinner/>);
 
   return (
     <>
