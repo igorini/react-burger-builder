@@ -14,7 +14,7 @@ const INGREDIENT_PRICES = {
   bacon: 0.3
 };
 
-const BurgerBuilder = () => {
+const BurgerBuilder = props => {
   const [ingredients, setIngredients] = useState(null);
   const [totalPrice, setTotalPrice] = useState(0.2);
   const [purchasable, setPurchasable] = useState(false);
@@ -61,30 +61,17 @@ const BurgerBuilder = () => {
   const orderNowHandler = () => setPurchasing(true);
   const purchaseCancelHandler = () => setPurchasing(false);
   const purchaseContinueHandler = () => {
-    setLoading(true);
-    const order = {
-      ingredients: {ingredients},
-      price: {totalPrice},
-      customer: {
-        name: 'Igor',
-        address: {
-          street: 'Some Street',
-          zipCode: '151352',
-          country: 'Ethiopia'
-        },
-        email: 'test@test.com'
-      },
-      deliveryMethod: 'fast'
+    const queryParams = [];
+    for (let i in ingredients) {
+      queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(ingredients[i]));
     }
-    axios.post('/orders.json', order)
-      .then(() => {
-        setLoading(false);
-        setPurchasing(false);
-      })
-      .catch(() => {
-        setLoading(false);
-        setPurchasing(false);
-      });
+    queryParams.push('price=' + totalPrice);
+
+    const queryString = queryParams.join('&');
+    props.history.push({
+      pathname: '/checkout',
+      search: '?' + queryString
+    });
   }
 
   const disabledInfo = {
