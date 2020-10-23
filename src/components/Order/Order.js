@@ -1,6 +1,5 @@
 import React from 'react';
 import * as Styled from './styled';
-import BurgerIngredient from "../Burger/BurgerIngredient/BurgerIngredient";
 
 const Order = props => {
   const ingredients = [];
