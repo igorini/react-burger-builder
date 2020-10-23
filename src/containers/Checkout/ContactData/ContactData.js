@@ -63,9 +63,14 @@ const ContactData = props => {
   const orderHandler = event => {
     event.preventDefault();
     setLoading(true);
+    const formData = {};
+    for (let formElementId in orderForm) {
+      formData[formElementId] = orderForm[formElementId].value;
+    }
     const order = {
       ingredients: props.ingredients,
-      price: props.price
+      price: props.price,
+      orderData: formData
     }
     axios.post('/orders.json', order)
       .then(() => {
@@ -82,7 +87,7 @@ const ContactData = props => {
     const updatedFormElement = {...updatedOrderForm[inputId]};
     updatedFormElement.value = event.target.value;
     updatedOrderForm[inputId] = updatedFormElement;
-    setOrderForm(updatedFormElement);
+    setOrderForm(updatedOrderForm);
   }
 
   const formElementsArray = [];
@@ -94,7 +99,7 @@ const ContactData = props => {
   }
 
   const form = loading ? <Spinner/> : (
-    <form>
+    <form onSubmit={orderHandler}>
       {formElementsArray.map(formElement =>
         <Input
           key={formElement.id}
@@ -104,7 +109,7 @@ const ContactData = props => {
           changed={event => inputChangedHandler(event, formElement.id)}
         />
       )}
-      <Button btnType="Success" clicked={orderHandler}>ORDER</Button>
+      <Button btnType="Success">ORDER</Button>
     </form>
   );
 
