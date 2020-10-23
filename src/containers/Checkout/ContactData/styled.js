@@ -13,7 +13,3 @@ export const ContactData = styled.div`
     width: 500px;
   }
 `;
-
-export const Input = styled.input`
-  display: block;
-`;
