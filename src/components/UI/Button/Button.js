@@ -11,7 +11,11 @@ const StyledColoredButton = styled(Styled.Button)`
 
 const button = props => {
   return (
-    <StyledColoredButton onClick={props.clicked} btnType={props.btnType}>
+    <StyledColoredButton
+      onClick={props.clicked}
+      btnType={props.btnType}
+      disabled={props.disabled}
+    >
       {props.children}
     </StyledColoredButton>
   );

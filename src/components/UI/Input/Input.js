@@ -2,13 +2,15 @@ import React from 'react';
 import * as Styled from './styled';
 
 const Input = props => {
-  let inputElement = null;
+  let inputElement;
   switch (props.elementType) {
     case ('input'):
       inputElement = <Styled.Input
         {...props.elementConfig}
         value={props.value}
         onChange={props.changed}
+        invalid={props.invalid}
+        touched={props.touched}
       />
       break;
     case ('textarea'):
@@ -16,6 +18,8 @@ const Input = props => {
         {...props.elementConfig}
         value={props.value}
         onChange={props.changed}
+        invalid={props.invalid}
+        touched={props.touched}
       />
       break;
     case ('select'):
@@ -23,6 +27,8 @@ const Input = props => {
         <Styled.Select
           value={props.value}
           onChange={props.changed}
+          invalid={props.invalid}
+          touched={props.touched}
         >
           {props.elementConfig.options.map(option =>
             <option key={option.value} value={option.value}>
@@ -36,6 +42,8 @@ const Input = props => {
         {...props.elementConfig}
         value={props.value}
         onChange={props.changed}
+        invalid={props.invalid}
+        touched={props.touched}
       />
   }
 

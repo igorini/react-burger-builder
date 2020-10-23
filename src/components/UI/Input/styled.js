@@ -14,8 +14,8 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   outline: none;
-  border: 1px solid #ccc;
-  background-color: white;
+  border: ${props => props.touched && props.invalid ? "1px solid red" : "1px solid #ccc"};
+  background-color: ${props => props.touched && props.invalid ? "salmon" : "white"};
   font: inherit;
   padding: 6px 10px;
   display: block;
@@ -30,8 +30,8 @@ export const Input = styled.input`
 
 export const TextArea = styled.textarea`
   outline: none;
-  border: 1px solid #ccc;
-  background-color: white;
+  border: ${props => props.touched && props.invalid ? "1px solid red" : "1px solid #ccc"};
+  background-color: ${props => props.touched && props.invalid ? "salmon" : "white"};
   font: inherit;
   padding: 6px 10px;
   display: block;
@@ -46,8 +46,8 @@ export const TextArea = styled.textarea`
 
 export const Select = styled.select`
   outline: none;
-  border: 1px solid #ccc;
-  background-color: white;
+  border: ${props => props.touched && props.invalid ? "1px solid red" : "1px solid #ccc"};
+  background-color: ${props => props.touched && props.invalid ? "salmon" : "white"};
   font: inherit;
   padding: 6px 10px;
   display: block;
