@@ -8,10 +8,10 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 
 const INGREDIENT_PRICES = {
-  salad: 0.1,
-  cheese: 0.2,
-  meat: 0.4,
-  bacon: 0.3
+  salad: 0.2,
+  cheese: 0.3,
+  meat: 0.5,
+  bacon: 0.4
 };
 
 const BurgerBuilder = props => {
