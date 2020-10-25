@@ -10,7 +10,7 @@ import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 const INGREDIENT_PRICES = {
   salad: 0.2,
   cheese: 0.3,
-  meat: 0.5,
+  meat: 0.6,
   bacon: 0.4
 };
 
