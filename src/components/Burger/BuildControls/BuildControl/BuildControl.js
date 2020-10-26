@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Styled from './styled';
 
-const buildControl = (props) => (
+const BuildControl = (props) => (
   <Styled.BuildControl>
     <Styled.Label>{props.label}</Styled.Label>
     <Styled.More onClick={props.added}>More</Styled.More>
@@ -11,4 +11,4 @@ const buildControl = (props) => (
   </Styled.BuildControl>
 );
 
-export default buildControl;
+export default BuildControl;

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
+import CheckoutSummary from 'components/Order/CheckoutSummary/CheckoutSummary';
 import { Route } from 'react-router-dom';
-import ContactData from './ContactData/ContactData';
-import { useComponentWillMount } from '../../utils/componentWillMount';
+import { useComponentWillMount } from 'utils/componentWillMount';
+import ContactData from 'containers/Checkout/ContactData/ContactData';
 
 const Checkout = (props) => {
   const [ingredients, setIngredients] = useState(null);

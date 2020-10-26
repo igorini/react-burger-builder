@@ -11,7 +11,7 @@ const StyledColoredButton = styled(Styled.Button)`
       : 'gray'};
 `;
 
-const button = (props) => {
+const Button = (props) => {
   return (
     <StyledColoredButton
       onClick={props.clicked}
@@ -23,4 +23,4 @@ const button = (props) => {
   );
 };
 
-export default button;
+export default Button;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Modal from '../../components/UI/Modal/Modal';
+import Modal from 'components/UI/Modal/Modal';
 
 const useConstructor = (initializer) => useState(initializer);
 

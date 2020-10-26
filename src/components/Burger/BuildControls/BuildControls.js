@@ -9,7 +9,7 @@ const controls = [
   { label: 'Meat', type: 'meat' },
 ];
 
-const buildControls = (props) => (
+const BuildControls = (props) => (
   <Styled.BuildControls>
     <p>
       Current Price: <strong>${props.price.toFixed(2)}</strong>
@@ -32,4 +32,4 @@ const buildControls = (props) => (
   </Styled.BuildControls>
 );
 
-export default buildControls;
+export default BuildControls;

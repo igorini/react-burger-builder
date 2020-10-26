@@ -17,10 +17,10 @@ const ingredientSwitch = (type) =>
     salad: <Styled.Salad />,
   }[type]);
 
-const burgerIngredient = (props) => ingredientSwitch(props.type);
+const BurgerIngredient = (props) => ingredientSwitch(props.type);
 
-burgerIngredient.propTypes = {
+BurgerIngredient.propTypes = {
   type: PropTypes.string.isRequired,
 };
 
-export default burgerIngredient;
+export default BurgerIngredient;

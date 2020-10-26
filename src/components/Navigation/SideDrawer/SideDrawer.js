@@ -1,10 +1,10 @@
 import React from 'react';
-import Logo from '../../Logo/Logo';
-import NavigationItems from '../NavigationItems/NavigationItems';
 import * as Styled from './styled';
-import Backdrop from '../../UI/Backdrop/Backdrop';
+import Backdrop from 'components/UI/Backdrop/Backdrop';
+import Logo from 'components/Logo/Logo';
+import NavigationItems from 'components/Navigation/NavigationItems/NavigationItems';
 
-const sideDrawer = (props) => (
+const SideDrawer = (props) => (
   <>
     <Backdrop show={props.open} clicked={props.closed} />
     <Styled.SideDrawer drawerAction={props.open ? 'open' : 'close'}>
@@ -18,4 +18,4 @@ const sideDrawer = (props) => (
   </>
 );
 
-export default sideDrawer;
+export default SideDrawer;

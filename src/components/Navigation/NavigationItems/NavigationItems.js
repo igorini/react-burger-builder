@@ -2,7 +2,7 @@ import React from 'react';
 import * as Styled from './styled';
 import NavigationItem from './NavigationItem/NavigationItem';
 
-const navigationItems = () => (
+const NavigationItems = () => (
   <Styled.NavigationItems>
     <NavigationItem link="/" exact>
       Burger Builder
@@ -11,4 +11,4 @@ const navigationItems = () => (
   </Styled.NavigationItems>
 );
 
-export default navigationItems;
+export default NavigationItems;

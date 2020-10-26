@@ -1,10 +1,10 @@
 import React from 'react';
 import * as Styled from './styled';
-import Logo from '../../Logo/Logo';
-import NavigationItems from '../NavigationItems/NavigationItems';
-import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle';
+import DrawerToggle from 'components/Navigation/SideDrawer/DrawerToggle/DrawerToggle';
+import Logo from 'components/Logo/Logo';
+import NavigationItems from 'components/Navigation/NavigationItems/NavigationItems';
 
-const toolbar = (props) => (
+const Toolbar = (props) => (
   <Styled.Toolbar>
     <DrawerToggle clicked={props.drawerToggleClicked} />
     <Styled.Logo>
@@ -16,4 +16,4 @@ const toolbar = (props) => (
   </Styled.Toolbar>
 );
 
-export default toolbar;
+export default Toolbar;

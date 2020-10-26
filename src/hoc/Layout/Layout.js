@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as Styled from './styled';
-import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
-import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
+import Toolbar from 'components/Navigation/Toolbar/Toolbar';
+import SideDrawer from 'components/Navigation/SideDrawer/SideDrawer';
 
 const Layout = (props) => {
   const [showSideDrawer, setShowSideDrawer] = useState(false);

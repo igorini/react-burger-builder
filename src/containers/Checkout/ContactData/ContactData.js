@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import * as Styled from './styled';
-import Button from '../../../components/UI/Button/Button';
-import axios from '../../../axios-orders';
-import Spinner from '../../../components/UI/Spinner/Spinner';
-import Input from '../../../components/UI/Input/Input';
+import axios from 'axios-orders';
+import Spinner from 'components/UI/Spinner/Spinner';
+import Input from 'components/UI/Input/Input';
+import Button from 'components/UI/Button/Button';
 
 const ContactData = (props) => {
   const [orderForm, setOrderForm] = useState({

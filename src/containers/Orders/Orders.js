@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Order from '../../components/Order/Order';
-import axios from '../../axios-orders';
-import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import axios from 'axios-orders';
+import Order from 'components/Order/Order';
+import withErrorHandler from 'hoc/withErrorHandler/withErrorHandler';
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);

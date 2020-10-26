@@ -2,7 +2,7 @@ import React from 'react';
 import * as Styled from './styled';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
-const burger = (props) => {
+const Burger = (props) => {
   let transformedIngredients = Object.keys(props.ingredients)
     .map((ingredientKey) =>
       [...Array(props.ingredients[ingredientKey])].map((_, i) => (
@@ -27,4 +27,4 @@ const burger = (props) => {
   );
 };
 
-export default burger;
+export default Burger;
