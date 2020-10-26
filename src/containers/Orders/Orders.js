@@ -1,23 +1,21 @@
-import React, {useEffect, useState} from 'react';
-import Order from "../../components/Order/Order";
-import axios from "../../axios-orders";
-import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
+import React, { useEffect, useState } from 'react';
+import Order from '../../components/Order/Order';
+import axios from '../../axios-orders';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 const Orders = () => {
-
   const [orders, setOrders] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('/orders.json')
-      .then(response => {
+    axios
+      .get('/orders.json')
+      .then((response) => {
         console.log(response.data);
-        const fetchedOrders = Object.keys(response.data).map(i => (
-          {
-            ...response.data[i],
-            id: i
-          }
-        ));
+        const fetchedOrders = Object.keys(response.data).map((i) => ({
+          ...response.data[i],
+          id: i,
+        }));
         setLoading(false);
         setOrders(fetchedOrders);
       })
@@ -26,11 +24,13 @@ const Orders = () => {
 
   return (
     <div>
-      {orders.map(order => <Order
-        key={order.id}
-        ingredients={order.ingredients}
-        price={+order.price}
-      />)}
+      {orders.map((order) => (
+        <Order
+          key={order.id}
+          ingredients={order.ingredients}
+          price={+order.price}
+        />
+      ))}
     </div>
   );
 };

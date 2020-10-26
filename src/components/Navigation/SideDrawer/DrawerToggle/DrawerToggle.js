@@ -1,11 +1,11 @@
 import React from 'react';
 import * as Styled from './styled';
 
-const DrawerToggle = props => (
+const DrawerToggle = (props) => (
   <Styled.DrawerToggle onClick={props.clicked}>
-    <div/>
-    <div/>
-    <div/>
+    <div />
+    <div />
+    <div />
   </Styled.DrawerToggle>
 );
 

@@ -2,16 +2,16 @@ import React from 'react';
 import * as Styled from './styled';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
-import DrawerToggle from "../SideDrawer/DrawerToggle/DrawerToggle";
+import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle';
 
-const toolbar = props => (
+const toolbar = (props) => (
   <Styled.Toolbar>
-    <DrawerToggle clicked={props.drawerToggleClicked}/>
+    <DrawerToggle clicked={props.drawerToggleClicked} />
     <Styled.Logo>
-      <Logo/>
+      <Logo />
     </Styled.Logo>
     <Styled.DesktopOnly>
-      <NavigationItems/>
+      <NavigationItems />
     </Styled.DesktopOnly>
   </Styled.Toolbar>
 );

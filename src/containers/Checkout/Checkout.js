@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
-import CheckoutSummary from "../../components/Order/CheckoutSummary/CheckoutSummary";
-import {Route} from 'react-router-dom';
-import ContactData from "./ContactData/ContactData";
-import {useComponentWillMount} from "../../utils/componentWillMount";
+import React, { useState } from 'react';
+import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
+import { Route } from 'react-router-dom';
+import ContactData from './ContactData/ContactData';
+import { useComponentWillMount } from '../../utils/componentWillMount';
 
-const Checkout = props => {
-  const [ingredients, setIngredients] = useState(null)
+const Checkout = (props) => {
+  const [ingredients, setIngredients] = useState(null);
   const [price, setPrice] = useState(0);
 
   useComponentWillMount(() => {
@@ -25,7 +25,8 @@ const Checkout = props => {
 
   const checkoutCancelledHandler = () => props.history.goBack();
 
-  const checkoutContinuedHandler = () => props.history.replace('/checkout/contact-data');
+  const checkoutContinuedHandler = () =>
+    props.history.replace('/checkout/contact-data');
 
   return (
     <div>
@@ -36,12 +37,8 @@ const Checkout = props => {
       />
       <Route
         path={props.match.path + '/contact-data'}
-        render={props => (
-          <ContactData
-            ingredients={ingredients}
-            price={price}
-            {...props}
-          />
+        render={(props) => (
+          <ContactData ingredients={ingredients} price={price} {...props} />
         )}
       />
     </div>

@@ -1,26 +1,34 @@
 import React from 'react';
-import * as Styled from "./styled";
-import BuildControl from "./BuildControl/BuildControl";
+import * as Styled from './styled';
+import BuildControl from './BuildControl/BuildControl';
 
 const controls = [
-  { label: 'Salad' , type: 'salad' },
-  { label: 'Bacon' , type: 'bacon' },
+  { label: 'Salad', type: 'salad' },
+  { label: 'Bacon', type: 'bacon' },
   { label: 'Cheese', type: 'cheese' },
-  { label: 'Meat'  , type: 'meat' },
+  { label: 'Meat', type: 'meat' },
 ];
 
-const buildControls = props => (
+const buildControls = (props) => (
   <Styled.BuildControls>
-    <p>Current Price: <strong>${props.price.toFixed(2)}</strong></p>
-    {controls.map(ctrl => <BuildControl
-      key={ctrl.label}
-      label={ctrl.label}
-      added={() => props.ingredientAdded(ctrl.type)}
-      removed={() => props.ingredientRemoved(ctrl.type)}
-      disabled={props.disabled[ctrl.type]}/>)}
+    <p>
+      Current Price: <strong>${props.price.toFixed(2)}</strong>
+    </p>
+    {controls.map((ctrl) => (
+      <BuildControl
+        key={ctrl.label}
+        label={ctrl.label}
+        added={() => props.ingredientAdded(ctrl.type)}
+        removed={() => props.ingredientRemoved(ctrl.type)}
+        disabled={props.disabled[ctrl.type]}
+      />
+    ))}
     <Styled.OrderButton
       disabled={!props.purchasable}
-      onClick={props.orderNowClicked}>Order Now</Styled.OrderButton>
+      onClick={props.orderNowClicked}
+    >
+      Order Now
+    </Styled.OrderButton>
   </Styled.BuildControls>
 );
 

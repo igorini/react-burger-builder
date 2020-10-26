@@ -4,16 +4,15 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 import * as Styled from './styled';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 
-const sideDrawer = props => (
+const sideDrawer = (props) => (
   <>
-    <Backdrop show={props.open} clicked={props.closed}/>
-    <Styled.SideDrawer
-      drawerAction={props.open ? 'open' : 'close'}>
+    <Backdrop show={props.open} clicked={props.closed} />
+    <Styled.SideDrawer drawerAction={props.open ? 'open' : 'close'}>
       <Styled.Logo>
-        <Logo/>
+        <Logo />
       </Styled.Logo>
       <nav>
-        <NavigationItems/>
+        <NavigationItems />
       </nav>
     </Styled.SideDrawer>
   </>

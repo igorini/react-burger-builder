@@ -1,15 +1,17 @@
 import React from 'react';
 import * as Styled from './styled';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledColoredButton = styled(Styled.Button)`
-  color: ${props =>
-    props.btnType === "green" ? '#5C9210' :
-    props.btnType === "red" ? '#944317' : 'gray'
-  };
+  color: ${(props) =>
+    props.btnType === 'green'
+      ? '#5C9210'
+      : props.btnType === 'red'
+      ? '#944317'
+      : 'gray'};
 `;
 
-const button = props => {
+const button = (props) => {
   return (
     <StyledColoredButton
       onClick={props.clicked}
@@ -19,6 +21,6 @@ const button = props => {
       {props.children}
     </StyledColoredButton>
   );
-}
+};
 
 export default button;

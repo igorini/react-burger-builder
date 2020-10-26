@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const defaultMargin = '2% auto';
 
 export const BreadBottom = styled.div`
   height: 13%;
   width: 80%;
-  background: linear-gradient(#F08E4A, #e27b36);
+  background: linear-gradient(#f08e4a, #e27b36);
   border-radius: 0 0 30px 30px;
   box-shadow: inset -15px 0 #c15711;
   margin: ${defaultMargin};
@@ -32,8 +32,8 @@ export const Seeds1 = styled.div`
   transform: rotate(-20deg);
   box-shadow: inset -2px -3px #c9c9c9;
 
-  &:before{
-    content: "";
+  &:before {
+    content: '';
     width: 100%;
     height: 100%;
     position: absolute;
@@ -44,9 +44,9 @@ export const Seeds1 = styled.div`
     transform: rotate(60deg);
     box-shadow: inset -1px -3px #c9c9c9;
   }
-  
-  &:after{
-    content: "";
+
+  &:after {
+    content: '';
     width: 100%;
     height: 100%;
     position: absolute;
@@ -70,8 +70,8 @@ export const Seeds2 = styled.div`
   transform: rotate(10deg);
   box-shadow: inset -3px 0 #c9c9c9;
 
-  &:before{
-    content: "";
+  &:before {
+    content: '';
     width: 100%;
     height: 100%;
     position: absolute;

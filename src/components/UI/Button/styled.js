@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Button = styled.button`
   background-color: transparent;
@@ -10,12 +10,12 @@ export const Button = styled.button`
   padding: 10px;
   margin: 10px;
   font-weight: bold;
-  
+
   &:first-of-type {
     margin-left: 0;
     padding-left: 0;
   }
-  
+
   &:disabled {
     color: #ccc;
     cursor: not-allowed;

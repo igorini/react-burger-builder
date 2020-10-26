@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Modal = styled.div`
   position: fixed;
@@ -12,7 +12,7 @@ export const Modal = styled.div`
   top: 30%;
   box-sizing: border-box;
   transition: all 0.3s ease-out;
-  
+
   @media (min-width: 600px) {
     width: 500px;
     left: calc(50% - 250px);

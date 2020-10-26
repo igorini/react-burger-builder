@@ -4,7 +4,9 @@ import NavigationItem from './NavigationItem/NavigationItem';
 
 const navigationItems = () => (
   <Styled.NavigationItems>
-    <NavigationItem link="/" exact>Burger Builder</NavigationItem>
+    <NavigationItem link="/" exact>
+      Burger Builder
+    </NavigationItem>
     <NavigationItem link="/orders">Orders</NavigationItem>
   </Styled.NavigationItems>
 );

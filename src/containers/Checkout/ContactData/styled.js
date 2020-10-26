@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ContactData = styled.div`
   margin: 20px auto;
@@ -9,7 +9,7 @@ export const ContactData = styled.div`
   padding: 10px;
   box-sizing: border-box;
 
-  &@media (min-width: 600px) {
+  @media (min-width: 600px) {
     width: 500px;
   }
 `;

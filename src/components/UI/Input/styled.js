@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const FormInput = styled.div`
   width: 100%;
@@ -14,14 +14,16 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   outline: none;
-  border: ${props => props.touched && props.invalid ? "1px solid red" : "1px solid #ccc"};
-  background-color: ${props => props.touched && props.invalid ? "salmon" : "white"};
+  border: ${(props) =>
+    props.touched && props.invalid ? '1px solid red' : '1px solid #ccc'};
+  background-color: ${(props) =>
+    props.touched && props.invalid ? 'salmon' : 'white'};
   font: inherit;
   padding: 6px 10px;
   display: block;
   width: 100%;
   box-sizing: border-box;
-  
+
   &:focus {
     outline: none;
     background-color: #ccc;
@@ -30,14 +32,16 @@ export const Input = styled.input`
 
 export const TextArea = styled.textarea`
   outline: none;
-  border: ${props => props.touched && props.invalid ? "1px solid red" : "1px solid #ccc"};
-  background-color: ${props => props.touched && props.invalid ? "salmon" : "white"};
+  border: ${(props) =>
+    props.touched && props.invalid ? '1px solid red' : '1px solid #ccc'};
+  background-color: ${(props) =>
+    props.touched && props.invalid ? 'salmon' : 'white'};
   font: inherit;
   padding: 6px 10px;
   display: block;
   width: 100%;
   box-sizing: border-box;
-    
+
   &:focus {
     outline: none;
     background-color: #ccc;
@@ -46,14 +50,16 @@ export const TextArea = styled.textarea`
 
 export const Select = styled.select`
   outline: none;
-  border: ${props => props.touched && props.invalid ? "1px solid red" : "1px solid #ccc"};
-  background-color: ${props => props.touched && props.invalid ? "salmon" : "white"};
+  border: ${(props) =>
+    props.touched && props.invalid ? '1px solid red' : '1px solid #ccc'};
+  background-color: ${(props) =>
+    props.touched && props.invalid ? 'salmon' : 'white'};
   font: inherit;
   padding: 6px 10px;
   display: block;
   width: 100%;
   box-sizing: border-box;
-    
+
   &:focus {
     outline: none;
     background-color: #ccc;

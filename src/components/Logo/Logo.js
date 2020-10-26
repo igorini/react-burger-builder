@@ -4,7 +4,7 @@ import * as Styled from './styled';
 
 const logo = () => (
   <Styled.Logo>
-    <img src={burgerLogo} alt="MyBurger"/>
+    <img src={burgerLogo} alt="MyBurger" />
   </Styled.Logo>
 );
 

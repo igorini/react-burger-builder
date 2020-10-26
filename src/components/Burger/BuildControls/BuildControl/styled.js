@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Button = styled.button`
   display: block;
@@ -6,23 +6,23 @@ const Button = styled.button`
   padding: 5px;
   margin: 0 5px;
   width: 80px;
-  border: 1px solid #AA6817;
+  border: 1px solid #aa6817;
   cursor: pointer;
   outline: none;
-  
+
   &:disabled {
-    background-color: #AC9980;
-    border: 1px solid #7E7365;
+    background-color: #ac9980;
+    border: 1px solid #7e7365;
     color: #ccc;
     cursor: default;
   }
-  
+
   &:hover:disabled {
-    background-color: #AC9980;
+    background-color: #ac9980;
     color: #ccc;
     cursor: not-allowed;
   }
-`
+`;
 
 export const BuildControl = styled.div`
   display: flex;
@@ -35,24 +35,26 @@ export const Label = styled.div`
   padding: 10px;
   font-weight: bold;
   width: 80px;
-`
+`;
 
 export const More = styled(Button)`
-  background-color: #8F5E1E;
+  background-color: #8f5e1e;
   color: white;
-  
-  &:hover, &:active {
-    background-color: #99703F;
+
+  &:hover,
+  &:active {
+    background-color: #99703f;
     color: white;
   }
-`
+`;
 
 export const Less = styled(Button)`
-  background-color: #D39952;
+  background-color: #d39952;
   color: white;
-  
-  &:hover, &:active {
-    background-color: #DAA972;
+
+  &:hover,
+  &:active {
+    background-color: #daa972;
     color: white;
   }
-`
+`;
