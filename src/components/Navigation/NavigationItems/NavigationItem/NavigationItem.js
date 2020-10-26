@@ -1,6 +1,6 @@
-import React from 'react';
-import * as Styled from './styled';
-import { NavLink } from 'react-router-dom';
+import React from 'react'
+import * as Styled from './styled'
+import { NavLink } from 'react-router-dom'
 
 const NavigationItem = (props) => (
   <Styled.NavigationItem>
@@ -10,6 +10,6 @@ const NavigationItem = (props) => (
       </NavLink>
     </strong>
   </Styled.NavigationItem>
-);
+)
 
-export default NavigationItem;
+export default NavigationItem

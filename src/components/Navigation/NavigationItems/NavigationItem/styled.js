@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const NavigationItem = styled.li`
   margin: 10px 0;
@@ -44,4 +44,4 @@ export const NavigationItem = styled.li`
       color: white;
     }
   }
-`;
+`

@@ -1,5 +1,5 @@
-import React from 'react';
-import * as Styled from './styled';
+import React from 'react'
+import * as Styled from './styled'
 
 const DrawerToggle = (props) => (
   <Styled.DrawerToggle onClick={props.clicked}>
@@ -7,6 +7,6 @@ const DrawerToggle = (props) => (
     <div />
     <div />
   </Styled.DrawerToggle>
-);
+)
 
-export default DrawerToggle;
+export default DrawerToggle

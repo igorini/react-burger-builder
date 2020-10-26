@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Logo = styled.div`
   background-color: white;
@@ -10,4 +10,4 @@ export const Logo = styled.div`
   & img {
     height: 100%;
   }
-`;
+`

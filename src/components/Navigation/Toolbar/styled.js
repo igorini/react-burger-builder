@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Toolbar = styled.header`
   height: 56px;
@@ -17,14 +17,14 @@ export const Toolbar = styled.header`
   &nav {
     height: 100%;
   }
-`;
+`
 
 export const Logo = styled.div`
   height: 80%;
-`;
+`
 
 export const DesktopOnly = styled.nav`
   @media (max-width: 499px) {
     display: none;
   }
-`;
+`

@@ -1,6 +1,6 @@
-import React from 'react';
-import * as Styled from './styled';
-import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
+import React from 'react'
+import * as Styled from './styled'
+import BurgerIngredient from './BurgerIngredient/BurgerIngredient'
 
 const Burger = (props) => {
   let transformedIngredients = Object.keys(props.ingredients)
@@ -9,14 +9,14 @@ const Burger = (props) => {
         <BurgerIngredient key={ingredientKey + i} type={ingredientKey} />
       ))
     )
-    .reduce((prev, cur) => prev.concat(cur), []);
+    .reduce((prev, cur) => prev.concat(cur), [])
 
   transformedIngredients =
     transformedIngredients.length === 0 ? (
       <p>Please add ingredients</p>
     ) : (
       transformedIngredients
-    );
+    )
 
   return (
     <Styled.Burger>
@@ -24,7 +24,7 @@ const Burger = (props) => {
       {transformedIngredients}
       <BurgerIngredient type="bread-bottom" />
     </Styled.Burger>
-  );
-};
+  )
+}
 
-export default Burger;
+export default Burger

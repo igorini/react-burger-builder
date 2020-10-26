@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Backdrop = styled.div`
   width: 100%;
@@ -8,4 +8,4 @@ export const Backdrop = styled.div`
   left: 0;
   top: 0;
   background-color: rgba(0, 0, 0, 0.5);
-`;
+`

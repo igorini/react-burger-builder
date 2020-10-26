@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Order = styled.div`
   width: 80%;
@@ -7,4 +7,4 @@ export const Order = styled.div`
   padding: 10px;
   margin: 10px auto;
   box-sizing: border-box;
-`;
+`

@@ -1,5 +1,5 @@
-import React from 'react';
-import Button from 'components/UI/Button/Button';
+import React from 'react'
+import Button from 'components/UI/Button/Button'
 
 const OrderSummary = (props) => {
   const ingredientSummary = Object.keys(props.ingredients).map((key) => (
@@ -7,7 +7,7 @@ const OrderSummary = (props) => {
       <span style={{ textTransform: 'capitalize' }}>{key}</span>:{' '}
       {props.ingredients[key]}
     </li>
-  ));
+  ))
 
   return (
     <>
@@ -25,7 +25,7 @@ const OrderSummary = (props) => {
         Cancel
       </Button>
     </>
-  );
-};
+  )
+}
 
-export default OrderSummary;
+export default OrderSummary

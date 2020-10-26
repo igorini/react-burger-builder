@@ -1,16 +1,16 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const FormInput = styled.div`
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
-`;
+`
 
 export const Label = styled.label`
   font-weight: bold;
   display: block;
   margin-bottom: 8px;
-`;
+`
 
 export const Input = styled.input`
   outline: none;
@@ -28,7 +28,7 @@ export const Input = styled.input`
     outline: none;
     background-color: #ccc;
   }
-`;
+`
 
 export const TextArea = styled.textarea`
   outline: none;
@@ -46,7 +46,7 @@ export const TextArea = styled.textarea`
     outline: none;
     background-color: #ccc;
   }
-`;
+`
 
 export const Select = styled.select`
   outline: none;
@@ -64,4 +64,4 @@ export const Select = styled.select`
     outline: none;
     background-color: #ccc;
   }
-`;
+`

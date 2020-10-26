@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-const defaultMargin = '2% auto';
+const defaultMargin = '2% auto'
 
 export const BreadBottom = styled.div`
   height: 13%;
@@ -9,7 +9,7 @@ export const BreadBottom = styled.div`
   border-radius: 0 0 30px 30px;
   box-shadow: inset -15px 0 #c15711;
   margin: ${defaultMargin};
-`;
+`
 
 export const BreadTop = styled.div`
   height: 20%;
@@ -19,7 +19,7 @@ export const BreadTop = styled.div`
   box-shadow: inset -15px 0 #c15711;
   margin: ${defaultMargin};
   position: relative;
-`;
+`
 
 export const Seeds1 = styled.div`
   width: 10%;
@@ -57,7 +57,7 @@ export const Seeds1 = styled.div`
     transform: rotate(60deg);
     box-shadow: inset -1px 2px #c9c9c9;
   }
-`;
+`
 
 export const Seeds2 = styled.div`
   width: 10%;
@@ -82,7 +82,7 @@ export const Seeds2 = styled.div`
     transform: rotate(90deg);
     box-shadow: inset 1px 3px #c9c9c9;
   }
-`;
+`
 
 export const Meat = styled.div`
   width: 80%;
@@ -90,7 +90,7 @@ export const Meat = styled.div`
   background: linear-gradient(#7f3608, #702e05);
   margin: ${defaultMargin};
   border-radius: 15px;
-`;
+`
 
 export const Cheese = styled.div`
   width: 90%;
@@ -98,7 +98,7 @@ export const Cheese = styled.div`
   margin: ${defaultMargin};
   background: linear-gradient(#f4d004, #d6bb22);
   border-radius: 20px;
-`;
+`
 
 export const Salad = styled.div`
   width: 85%;
@@ -106,11 +106,11 @@ export const Salad = styled.div`
   margin: ${defaultMargin};
   background: linear-gradient(#228c1d, #91ce50);
   border-radius: 20px;
-`;
+`
 
 export const Bacon = styled.div`
   width: 80%;
   height: 3%;
   background: linear-gradient(#bf3813, #c45e38);
   margin: ${defaultMargin};
-`;
+`

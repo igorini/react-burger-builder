@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const BuildControls = styled.div`
   width: 100%;
@@ -9,7 +9,7 @@ export const BuildControls = styled.div`
   box-shadow: 0 2px 1px #ccc;
   margin: auto;
   padding: 10px 0;
-`;
+`
 
 export const OrderButton = styled.button`
   background-color: #dad735;
@@ -51,4 +51,4 @@ export const OrderButton = styled.button`
       transform: scale(1);
     }
   }
-`;
+`

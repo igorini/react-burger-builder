@@ -1,7 +1,7 @@
-import React from 'react';
-import * as Styled from './styled';
-import Burger from 'components/Burger/Burger';
-import Button from 'components/UI/Button/Button';
+import React from 'react'
+import * as Styled from './styled'
+import Burger from 'components/Burger/Burger'
+import Button from 'components/UI/Button/Button'
 
 const CheckoutSummary = (props) => {
   return (
@@ -17,7 +17,7 @@ const CheckoutSummary = (props) => {
         CANCEL
       </Button>
     </Styled.CheckoutSummary>
-  );
-};
+  )
+}
 
-export default CheckoutSummary;
+export default CheckoutSummary

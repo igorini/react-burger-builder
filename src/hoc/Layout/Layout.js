@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import * as Styled from './styled';
-import Toolbar from 'components/Navigation/Toolbar/Toolbar';
-import SideDrawer from 'components/Navigation/SideDrawer/SideDrawer';
+import React, { useState } from 'react'
+import * as Styled from './styled'
+import Toolbar from 'components/Navigation/Toolbar/Toolbar'
+import SideDrawer from 'components/Navigation/SideDrawer/SideDrawer'
 
 const Layout = (props) => {
-  const [showSideDrawer, setShowSideDrawer] = useState(false);
+  const [showSideDrawer, setShowSideDrawer] = useState(false)
 
-  const sideDrawerHandler = () => setShowSideDrawer(false);
+  const sideDrawerHandler = () => setShowSideDrawer(false)
   const sideDrawerToggleHandler = () =>
-    setShowSideDrawer((prevState) => !prevState);
+    setShowSideDrawer((prevState) => !prevState)
 
   return (
     <>
@@ -16,7 +16,7 @@ const Layout = (props) => {
       <SideDrawer open={showSideDrawer} closed={sideDrawerHandler} />
       <Styled.Content>{props.children}</Styled.Content>
     </>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

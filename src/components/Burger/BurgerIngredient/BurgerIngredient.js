@@ -1,6 +1,6 @@
-import React from 'react';
-import * as Styled from './styled';
-import PropTypes from 'prop-types';
+import React from 'react'
+import * as Styled from './styled'
+import PropTypes from 'prop-types'
 
 const ingredientSwitch = (type) =>
   ({
@@ -15,12 +15,12 @@ const ingredientSwitch = (type) =>
     cheese: <Styled.Cheese />,
     bacon: <Styled.Bacon />,
     salad: <Styled.Salad />,
-  }[type]);
+  }[type])
 
-const BurgerIngredient = (props) => ingredientSwitch(props.type);
+const BurgerIngredient = (props) => ingredientSwitch(props.type)
 
 BurgerIngredient.propTypes = {
   type: PropTypes.string.isRequired,
-};
+}
 
-export default BurgerIngredient;
+export default BurgerIngredient

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import * as Styled from './styled';
-import axios from 'axios-orders';
-import Spinner from 'components/UI/Spinner/Spinner';
-import Input from 'components/UI/Input/Input';
-import Button from 'components/UI/Button/Button';
+import React, { useState } from 'react'
+import * as Styled from './styled'
+import axios from 'axios-orders'
+import Spinner from 'components/UI/Spinner/Spinner'
+import Input from 'components/UI/Input/Input'
+import Button from 'components/UI/Button/Button'
 
 const ContactData = (props) => {
   const [orderForm, setOrderForm] = useState({
@@ -86,69 +86,69 @@ const ContactData = (props) => {
       validation: {},
       valid: true,
     },
-  });
-  const [loading, setLoading] = useState(false);
-  const [formValid, setFormValid] = useState(false);
+  })
+  const [loading, setLoading] = useState(false)
+  const [formValid, setFormValid] = useState(false)
 
   const orderHandler = (event) => {
-    event.preventDefault();
-    setLoading(true);
-    const formData = {};
+    event.preventDefault()
+    setLoading(true)
+    const formData = {}
     for (let formElementId in orderForm) {
-      formData[formElementId] = orderForm[formElementId].value;
+      formData[formElementId] = orderForm[formElementId].value
     }
     const order = {
       ingredients: props.ingredients,
       price: props.price,
       orderData: formData,
-    };
+    }
     axios
       .post('/orders.json', order)
       .then(() => {
-        setLoading(false);
-        props.history.push('/');
+        setLoading(false)
+        props.history.push('/')
       })
       .catch(() => {
-        setLoading(false);
-      });
-  };
+        setLoading(false)
+      })
+  }
 
   const inputChangedHandler = (event, inputId) => {
-    const updatedOrderForm = { ...orderForm };
-    const updatedFormElement = { ...updatedOrderForm[inputId] };
-    updatedFormElement.value = event.target.value;
+    const updatedOrderForm = { ...orderForm }
+    const updatedFormElement = { ...updatedOrderForm[inputId] }
+    updatedFormElement.value = event.target.value
     updatedFormElement.valid = checkValidity(
       updatedFormElement.value,
       updatedFormElement.validation
-    );
-    updatedFormElement.touched = true;
-    updatedOrderForm[inputId] = updatedFormElement;
+    )
+    updatedFormElement.touched = true
+    updatedOrderForm[inputId] = updatedFormElement
 
-    setFormValid(!Object.values(updatedOrderForm).some((el) => !el.valid));
-    setOrderForm(updatedOrderForm);
-  };
+    setFormValid(!Object.values(updatedOrderForm).some((el) => !el.valid))
+    setOrderForm(updatedOrderForm)
+  }
 
   const checkValidity = (value, rules) => {
-    let isValid = true;
+    let isValid = true
     if (rules.required) {
-      isValid = isValid && value.trim() !== '';
+      isValid = isValid && value.trim() !== ''
     }
     if (rules.minLength) {
-      isValid = isValid && value.length >= rules.minLength;
+      isValid = isValid && value.length >= rules.minLength
     }
     if (rules.maxLength) {
-      isValid = isValid && value.length <= rules.maxLength;
+      isValid = isValid && value.length <= rules.maxLength
     }
 
-    return isValid;
-  };
+    return isValid
+  }
 
-  const formElementsArray = [];
+  const formElementsArray = []
   for (let key in orderForm) {
     formElementsArray.push({
       id: key,
       config: orderForm[key],
-    });
+    })
   }
 
   const form = loading ? (
@@ -170,14 +170,14 @@ const ContactData = (props) => {
         ORDER
       </Button>
     </form>
-  );
+  )
 
   return (
     <Styled.ContactData>
       <h4>Enter your Contact Data</h4>
       {form}
     </Styled.ContactData>
-  );
-};
+  )
+}
 
-export default ContactData;
+export default ContactData

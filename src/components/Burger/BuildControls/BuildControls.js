@@ -1,13 +1,13 @@
-import React from 'react';
-import * as Styled from './styled';
-import BuildControl from './BuildControl/BuildControl';
+import React from 'react'
+import * as Styled from './styled'
+import BuildControl from './BuildControl/BuildControl'
 
 const controls = [
   { label: 'Salad', type: 'salad' },
   { label: 'Bacon', type: 'bacon' },
   { label: 'Cheese', type: 'cheese' },
   { label: 'Meat', type: 'meat' },
-];
+]
 
 const BuildControls = (props) => (
   <Styled.BuildControls>
@@ -30,6 +30,6 @@ const BuildControls = (props) => (
       Order Now
     </Styled.OrderButton>
   </Styled.BuildControls>
-);
+)
 
-export default BuildControls;
+export default BuildControls

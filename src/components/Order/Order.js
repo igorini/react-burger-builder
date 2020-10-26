@@ -1,13 +1,13 @@
-import React from 'react';
-import * as Styled from './styled';
+import React from 'react'
+import * as Styled from './styled'
 
 const Order = (props) => {
-  const ingredients = [];
+  const ingredients = []
   for (let ingredientName in props.ingredients) {
     ingredients.push({
       name: ingredientName,
       amount: props.ingredients[ingredientName],
-    });
+    })
   }
 
   const ingredientOutput = ingredients.map((ig) => (
@@ -23,7 +23,7 @@ const Order = (props) => {
     >
       {ig.name} ({ig.amount})
     </span>
-  ));
+  ))
 
   return (
     <Styled.Order>
@@ -32,7 +32,7 @@ const Order = (props) => {
         Price: <strong>$ {props.price.toFixed(2)}</strong>
       </p>
     </Styled.Order>
-  );
-};
+  )
+}
 
-export default Order;
+export default Order

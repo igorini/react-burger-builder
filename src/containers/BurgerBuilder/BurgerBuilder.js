@@ -1,87 +1,87 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios-orders';
-import Spinner from 'components/UI/Spinner/Spinner';
-import OrderSummary from 'components/Burger/OrderSummary/OrderSummary';
-import Burger from 'components/Burger/Burger';
-import BuildControls from 'components/Burger/BuildControls/BuildControls';
-import Modal from 'components/UI/Modal/Modal';
-import withErrorHandler from 'hoc/withErrorHandler/withErrorHandler';
+import React, { useEffect, useState } from 'react'
+import axios from 'axios-orders'
+import Spinner from 'components/UI/Spinner/Spinner'
+import OrderSummary from 'components/Burger/OrderSummary/OrderSummary'
+import Burger from 'components/Burger/Burger'
+import BuildControls from 'components/Burger/BuildControls/BuildControls'
+import Modal from 'components/UI/Modal/Modal'
+import withErrorHandler from 'hoc/withErrorHandler/withErrorHandler'
 
 const INGREDIENT_PRICES = {
   salad: 0.2,
   cheese: 0.3,
   meat: 0.6,
   bacon: 0.4,
-};
+}
 
 const BurgerBuilder = (props) => {
-  const [ingredients, setIngredients] = useState(null);
-  const [totalPrice, setTotalPrice] = useState(0.2);
-  const [purchasable, setPurchasable] = useState(false);
-  const [purchasing, setPurchasing] = useState(false);
-  const [loading] = useState(false);
-  const [error, setError] = useState(false);
+  const [ingredients, setIngredients] = useState(null)
+  const [totalPrice, setTotalPrice] = useState(0.2)
+  const [purchasable, setPurchasable] = useState(false)
+  const [purchasing, setPurchasing] = useState(false)
+  const [loading] = useState(false)
+  const [error, setError] = useState(false)
 
   useEffect(() => {
     axios
       .get('/ingredients.json')
       .then((response) => setIngredients(response.data))
-      .catch(() => setError(true));
-  }, []);
+      .catch(() => setError(true))
+  }, [])
 
   const updatePurchasable = (ingredients) => {
     const ingredientSum = Object.keys(ingredients)
       .map((key) => ingredients[key])
-      .reduce((sum, el) => sum + el, 0);
-    setPurchasable(ingredientSum > 0);
-  };
+      .reduce((sum, el) => sum + el, 0)
+    setPurchasable(ingredientSum > 0)
+  }
 
   const addIngredientHandler = (type) => {
-    const updatedIngredients = { ...ingredients };
-    updatedIngredients[type] = ingredients[type] + 1;
-    setIngredients(updatedIngredients);
+    const updatedIngredients = { ...ingredients }
+    updatedIngredients[type] = ingredients[type] + 1
+    setIngredients(updatedIngredients)
 
-    setTotalPrice(totalPrice + INGREDIENT_PRICES[type]);
-    updatePurchasable(updatedIngredients);
-  };
+    setTotalPrice(totalPrice + INGREDIENT_PRICES[type])
+    updatePurchasable(updatedIngredients)
+  }
 
   const removeIngredientHandler = (type) => {
-    const updatedIngredients = { ...ingredients };
-    updatedIngredients[type] = ingredients[type] - 1;
+    const updatedIngredients = { ...ingredients }
+    updatedIngredients[type] = ingredients[type] - 1
 
     if (updatedIngredients[type] < 0) {
-      return;
+      return
     }
 
-    setIngredients(updatedIngredients);
+    setIngredients(updatedIngredients)
 
-    setTotalPrice(totalPrice - INGREDIENT_PRICES[type]);
-    updatePurchasable(updatedIngredients);
-  };
+    setTotalPrice(totalPrice - INGREDIENT_PRICES[type])
+    updatePurchasable(updatedIngredients)
+  }
 
-  const orderNowHandler = () => setPurchasing(true);
-  const purchaseCancelHandler = () => setPurchasing(false);
+  const orderNowHandler = () => setPurchasing(true)
+  const purchaseCancelHandler = () => setPurchasing(false)
   const purchaseContinueHandler = () => {
-    const queryParams = [];
+    const queryParams = []
     for (let i in ingredients) {
       queryParams.push(
         encodeURIComponent(i) + '=' + encodeURIComponent(ingredients[i])
-      );
+      )
     }
-    queryParams.push('price=' + totalPrice);
+    queryParams.push('price=' + totalPrice)
 
-    const queryString = queryParams.join('&');
+    const queryString = queryParams.join('&')
     props.history.push({
       pathname: '/checkout',
       search: '?' + queryString,
-    });
-  };
+    })
+  }
 
   const disabledInfo = {
     ...ingredients,
-  };
+  }
   for (let key in disabledInfo) {
-    disabledInfo[key] = disabledInfo[key] <= 0;
+    disabledInfo[key] = disabledInfo[key] <= 0
   }
 
   const orderSummary =
@@ -94,7 +94,7 @@ const BurgerBuilder = (props) => {
         purchaseCancelled={purchaseCancelHandler}
         purchaseContinued={purchaseContinueHandler}
       />
-    );
+    )
 
   const burger = error ? (
     <p>Ingredients can't be loaded.</p>
@@ -112,7 +112,7 @@ const BurgerBuilder = (props) => {
     </>
   ) : (
     <Spinner />
-  );
+  )
 
   return (
     <>
@@ -121,7 +121,7 @@ const BurgerBuilder = (props) => {
       </Modal>
       {burger}
     </>
-  );
-};
+  )
+}
 
-export default withErrorHandler(BurgerBuilder, axios);
+export default withErrorHandler(BurgerBuilder, axios)

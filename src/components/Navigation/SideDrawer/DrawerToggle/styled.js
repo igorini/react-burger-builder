@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const DrawerToggle = styled.div`
   width: 40px;
@@ -20,4 +20,4 @@ export const DrawerToggle = styled.div`
   @media (min-width: 500px) {
     display: none;
   }
-`;
+`

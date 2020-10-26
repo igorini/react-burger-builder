@@ -1,5 +1,5 @@
-import React from 'react';
-import * as Styled from './styled';
+import React from 'react'
+import * as Styled from './styled'
 
 const BuildControl = (props) => (
   <Styled.BuildControl>
@@ -9,6 +9,6 @@ const BuildControl = (props) => (
       Less
     </Styled.Less>
   </Styled.BuildControl>
-);
+)
 
-export default BuildControl;
+export default BuildControl

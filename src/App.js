@@ -1,9 +1,9 @@
-import React from 'react';
-import Layout from 'hoc/Layout/Layout';
-import BurgerBuilder from 'containers/BurgerBuilder/BurgerBuilder';
-import Checkout from 'containers/Checkout/Checkout';
-import { Route, Switch } from 'react-router-dom';
-import Orders from 'containers/Orders/Orders';
+import React from 'react'
+import Layout from 'hoc/Layout/Layout'
+import BurgerBuilder from 'containers/BurgerBuilder/BurgerBuilder'
+import Checkout from 'containers/Checkout/Checkout'
+import { Route, Switch } from 'react-router-dom'
+import Orders from 'containers/Orders/Orders'
 
 const app = () => (
   <div>
@@ -15,6 +15,6 @@ const app = () => (
       </Switch>
     </Layout>
   </div>
-);
+)
 
-export default app;
+export default app

@@ -1,6 +1,6 @@
-import React from 'react';
-import * as Styled from './styled';
-import styled from 'styled-components';
+import React from 'react'
+import * as Styled from './styled'
+import styled from 'styled-components'
 
 const StyledColoredButton = styled(Styled.Button)`
   color: ${(props) =>
@@ -9,7 +9,7 @@ const StyledColoredButton = styled(Styled.Button)`
       : props.btnType === 'red'
       ? '#944317'
       : 'gray'};
-`;
+`
 
 const Button = (props) => {
   return (
@@ -20,7 +20,7 @@ const Button = (props) => {
     >
       {props.children}
     </StyledColoredButton>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

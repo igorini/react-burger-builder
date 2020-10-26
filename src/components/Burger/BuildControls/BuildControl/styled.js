@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const Button = styled.button`
   display: block;
@@ -22,20 +22,20 @@ const Button = styled.button`
     color: #ccc;
     cursor: not-allowed;
   }
-`;
+`
 
 export const BuildControl = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 5px 0;
-`;
+`
 
 export const Label = styled.div`
   padding: 10px;
   font-weight: bold;
   width: 80px;
-`;
+`
 
 export const More = styled(Button)`
   background-color: #8f5e1e;
@@ -46,7 +46,7 @@ export const More = styled(Button)`
     background-color: #99703f;
     color: white;
   }
-`;
+`
 
 export const Less = styled(Button)`
   background-color: #d39952;
@@ -57,4 +57,4 @@ export const Less = styled(Button)`
     background-color: #daa972;
     color: white;
   }
-`;
+`

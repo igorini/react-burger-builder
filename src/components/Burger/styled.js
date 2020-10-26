@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Burger = styled.div`
   width: 100%;
@@ -23,4 +23,4 @@ export const Burger = styled.div`
     width: 350px;
     height: 300px;
   }
-`;
+`

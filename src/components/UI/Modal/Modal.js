@@ -1,6 +1,6 @@
-import React from 'react';
-import * as Styled from './styled';
-import Backdrop from 'components/UI/Backdrop/Backdrop';
+import React from 'react'
+import * as Styled from './styled'
+import Backdrop from 'components/UI/Backdrop/Backdrop'
 
 const Modal = (props) => (
   <>
@@ -14,10 +14,9 @@ const Modal = (props) => (
       {props.children}
     </Styled.Modal>
   </>
-);
+)
 
 const areEqual = (prevProps, nextProps) =>
-  prevProps.show === nextProps.show &&
-  prevProps.children === nextProps.children;
+  prevProps.show === nextProps.show && prevProps.children === nextProps.children
 
-export default React.memo(Modal, areEqual);
+export default React.memo(Modal, areEqual)

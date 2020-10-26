@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Modal = styled.div`
   position: fixed;
@@ -17,4 +17,4 @@ export const Modal = styled.div`
     width: 500px;
     left: calc(50% - 250px);
   }
-`;
+`

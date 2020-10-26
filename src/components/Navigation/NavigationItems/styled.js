@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const NavigationItems = styled.ul`
   margin: 0;
@@ -12,4 +12,4 @@ export const NavigationItems = styled.ul`
   @media (min-width: 500px) {
     flex-flow: row;
   }
-`;
+`

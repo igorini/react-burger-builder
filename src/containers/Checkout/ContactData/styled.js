@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const ContactData = styled.div`
   margin: 20px auto;
@@ -12,4 +12,4 @@ export const ContactData = styled.div`
   @media (min-width: 600px) {
     width: 500px;
   }
-`;
+`

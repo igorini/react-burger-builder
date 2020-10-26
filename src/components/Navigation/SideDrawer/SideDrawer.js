@@ -1,8 +1,8 @@
-import React from 'react';
-import * as Styled from './styled';
-import Backdrop from 'components/UI/Backdrop/Backdrop';
-import Logo from 'components/Logo/Logo';
-import NavigationItems from 'components/Navigation/NavigationItems/NavigationItems';
+import React from 'react'
+import * as Styled from './styled'
+import Backdrop from 'components/UI/Backdrop/Backdrop'
+import Logo from 'components/Logo/Logo'
+import NavigationItems from 'components/Navigation/NavigationItems/NavigationItems'
 
 const SideDrawer = (props) => (
   <>
@@ -16,6 +16,6 @@ const SideDrawer = (props) => (
       </nav>
     </Styled.SideDrawer>
   </>
-);
+)
 
-export default SideDrawer;
+export default SideDrawer

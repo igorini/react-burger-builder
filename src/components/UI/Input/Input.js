@@ -1,8 +1,8 @@
-import React from 'react';
-import * as Styled from './styled';
+import React from 'react'
+import * as Styled from './styled'
 
 const Input = (props) => {
-  let inputElement;
+  let inputElement
   switch (props.elementType) {
     case 'input':
       inputElement = (
@@ -13,8 +13,8 @@ const Input = (props) => {
           invalid={props.invalid}
           touched={props.touched}
         />
-      );
-      break;
+      )
+      break
     case 'textarea':
       inputElement = (
         <Styled.TextArea
@@ -24,8 +24,8 @@ const Input = (props) => {
           invalid={props.invalid}
           touched={props.touched}
         />
-      );
-      break;
+      )
+      break
     case 'select':
       inputElement = (
         <Styled.Select
@@ -40,8 +40,8 @@ const Input = (props) => {
             </option>
           ))}
         </Styled.Select>
-      );
-      break;
+      )
+      break
     default:
       inputElement = (
         <Styled.Input
@@ -51,7 +51,7 @@ const Input = (props) => {
           invalid={props.invalid}
           touched={props.touched}
         />
-      );
+      )
   }
 
   return (
@@ -59,7 +59,7 @@ const Input = (props) => {
       <Styled.Label>{props.label}</Styled.Label>
       {inputElement}
     </Styled.FormInput>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input

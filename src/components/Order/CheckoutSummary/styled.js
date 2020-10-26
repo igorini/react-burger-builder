@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const CheckoutSummary = styled.div`
   text-align: center;
@@ -8,4 +8,4 @@ export const CheckoutSummary = styled.div`
   @media (min-width: 600px) {
     width: 500px;
   }
-`;
+`

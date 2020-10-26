@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Spinner = styled.div`
   font-size: 10px;
@@ -70,4 +70,4 @@ export const Spinner = styled.div`
       transform: rotate(360deg);
     }
   }
-`;
+`

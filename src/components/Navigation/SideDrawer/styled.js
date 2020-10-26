@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const SideDrawer = styled.div`
   position: fixed;
@@ -22,9 +22,9 @@ export const SideDrawer = styled.div`
   @media (min-width: 500px) {
     display: none;
   }
-`;
+`
 
 export const Logo = styled.div`
   height: 11%;
   margin-bottom: 32px;
-`;
+`
