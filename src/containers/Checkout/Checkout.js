@@ -1,28 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import CheckoutSummary from 'components/Order/CheckoutSummary/CheckoutSummary'
 import { Route } from 'react-router-dom'
-import { useComponentWillMount } from 'utils/componentWillMount'
 import ContactData from 'containers/Checkout/ContactData/ContactData'
+import { connect } from 'react-redux'
 
 const Checkout = (props) => {
-  const [ingredients, setIngredients] = useState(null)
-  const [price, setPrice] = useState(0)
-
-  useComponentWillMount(() => {
-    const query = new URLSearchParams(props.location.search)
-    const newIngredients = {}
-    let newPrice = 0
-    for (let param of query.entries()) {
-      if (param[0] === 'price') {
-        newPrice = param[1]
-      } else {
-        newIngredients[param[0]] = +param[1]
-      }
-    }
-    setIngredients(newIngredients)
-    setPrice(newPrice)
-  })
-
   const checkoutCancelledHandler = () => props.history.goBack()
 
   const checkoutContinuedHandler = () =>
@@ -31,18 +13,20 @@ const Checkout = (props) => {
   return (
     <div>
       <CheckoutSummary
-        ingredients={ingredients}
+        ingredients={props.ingredients}
         checkoutCancelled={checkoutCancelledHandler}
         checkoutContinued={checkoutContinuedHandler}
       />
       <Route
         path={props.match.path + '/contact-data'}
-        render={(props) => (
-          <ContactData ingredients={ingredients} price={price} {...props} />
-        )}
+        component={ContactData}
       />
     </div>
   )
 }
 
-export default Checkout
+const mapStateToProps = (state) => ({
+  ingredients: state.burger.ingredients,
+})
+
+export default connect(mapStateToProps)(Checkout)

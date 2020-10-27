@@ -4,6 +4,7 @@ import axios from 'axios-orders'
 import Spinner from 'components/UI/Spinner/Spinner'
 import Input from 'components/UI/Input/Input'
 import Button from 'components/UI/Button/Button'
+import { connect } from 'react-redux'
 
 const ContactData = (props) => {
   const [orderForm, setOrderForm] = useState({
@@ -180,4 +181,9 @@ const ContactData = (props) => {
   )
 }
 
-export default ContactData
+const mapStateToProps = (state) => ({
+  ingredients: state.burger.ingredients,
+  price: state.burger.price,
+})
+
+export default connect(mapStateToProps)(ContactData)

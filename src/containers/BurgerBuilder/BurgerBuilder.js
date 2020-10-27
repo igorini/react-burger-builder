@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios-orders'
 import Spinner from 'components/UI/Spinner/Spinner'
 import OrderSummary from 'components/Burger/OrderSummary/OrderSummary'
@@ -6,37 +6,25 @@ import Burger from 'components/Burger/Burger'
 import BuildControls from 'components/Burger/BuildControls/BuildControls'
 import Modal from 'components/UI/Modal/Modal'
 import withErrorHandler from 'hoc/withErrorHandler/withErrorHandler'
-
-const INGREDIENT_PRICES = {
-  salad: 0.2,
-  cheese: 0.3,
-  meat: 0.6,
-  bacon: 0.4,
-}
+import {
+  addIngredient,
+  removeIngredient,
+} from 'containers/BurgerBuilder/burgerSlice'
+import { connect } from 'react-redux'
 
 const BurgerBuilder = (props) => {
-  const [ingredients, setIngredients] = useState(null)
-  const [totalPrice, setTotalPrice] = useState(0.2)
-  const [purchasable, setPurchasable] = useState(false)
   const [purchasing, setPurchasing] = useState(false)
   const [loading] = useState(false)
-  const [error, setError] = useState(false)
+  const [error] = useState(false)
 
-  useEffect(() => {
+  /*  useEffect(() => {
     axios
       .get('/ingredients.json')
       .then((response) => setIngredients(response.data))
       .catch(() => setError(true))
-  }, [])
+  }, [])*/
 
-  const updatePurchasable = (ingredients) => {
-    const ingredientSum = Object.keys(ingredients)
-      .map((key) => ingredients[key])
-      .reduce((sum, el) => sum + el, 0)
-    setPurchasable(ingredientSum > 0)
-  }
-
-  const addIngredientHandler = (type) => {
+  /*  const addIngredientHandler = (type) => {
     const updatedIngredients = { ...ingredients }
     updatedIngredients[type] = ingredients[type] + 1
     setIngredients(updatedIngredients)
@@ -57,40 +45,28 @@ const BurgerBuilder = (props) => {
 
     setTotalPrice(totalPrice - INGREDIENT_PRICES[type])
     updatePurchasable(updatedIngredients)
-  }
+  }*/
 
   const orderNowHandler = () => setPurchasing(true)
   const purchaseCancelHandler = () => setPurchasing(false)
   const purchaseContinueHandler = () => {
-    const queryParams = []
-    for (let i in ingredients) {
-      queryParams.push(
-        encodeURIComponent(i) + '=' + encodeURIComponent(ingredients[i])
-      )
-    }
-    queryParams.push('price=' + totalPrice)
-
-    const queryString = queryParams.join('&')
-    props.history.push({
-      pathname: '/checkout',
-      search: '?' + queryString,
-    })
+    props.history.push('/checkout')
   }
 
   const disabledInfo = {
-    ...ingredients,
+    ...props.ingredients,
   }
   for (let key in disabledInfo) {
     disabledInfo[key] = disabledInfo[key] <= 0
   }
 
   const orderSummary =
-    loading || !ingredients ? (
+    loading || !props.ingredients ? (
       <Spinner />
     ) : (
       <OrderSummary
-        ingredients={ingredients}
-        price={totalPrice}
+        ingredients={props.ingredients}
+        price={props.price}
         purchaseCancelled={purchaseCancelHandler}
         purchaseContinued={purchaseContinueHandler}
       />
@@ -98,15 +74,15 @@ const BurgerBuilder = (props) => {
 
   const burger = error ? (
     <p>Ingredients can't be loaded.</p>
-  ) : ingredients ? (
+  ) : props.ingredients ? (
     <>
-      <Burger ingredients={ingredients} />
+      <Burger ingredients={props.ingredients} />
       <BuildControls
-        ingredientAdded={addIngredientHandler}
-        ingredientRemoved={removeIngredientHandler}
+        ingredientAdded={props.addIngredient}
+        ingredientRemoved={props.removeIngredient}
         disabled={disabledInfo}
-        price={totalPrice}
-        purchasable={purchasable}
+        price={props.price}
+        purchasable={props.purchasable}
         orderNowClicked={orderNowHandler}
       />
     </>
@@ -124,4 +100,15 @@ const BurgerBuilder = (props) => {
   )
 }
 
-export default withErrorHandler(BurgerBuilder, axios)
+const mapStateToProps = (state) => ({
+  ingredients: state.burger.ingredients,
+  price: state.burger.price,
+  purchasable: state.burger.purchasable,
+})
+
+const mapDispatchToProps = { addIngredient, removeIngredient }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withErrorHandler(BurgerBuilder, axios))

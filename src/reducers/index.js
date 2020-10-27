@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import ingredientsReducer from 'containers/BurgerBuilder/ingredientsSlice'
+import ingredientsReducer from 'containers/BurgerBuilder/burgerSlice'
 
 export default combineReducers({
-  ingredients: ingredientsReducer,
+  burger: ingredientsReducer,
 })
