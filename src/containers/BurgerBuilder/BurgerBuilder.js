@@ -18,7 +18,7 @@ const BurgerBuilder = (props) => {
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(props.fetchIngredients)
+    dispatch(fetchIngredients())
   }, [dispatch])
 
   const orderNowHandler = () => setPurchasing(true)
@@ -78,7 +78,7 @@ const mapStateToProps = (state) => ({
   error: state.burger.error,
 })
 
-const mapDispatchToProps = { addIngredient, removeIngredient, fetchIngredients }
+const mapDispatchToProps = { addIngredient, removeIngredient }
 
 export default connect(
   mapStateToProps,
