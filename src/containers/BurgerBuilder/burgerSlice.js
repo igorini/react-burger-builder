@@ -53,7 +53,13 @@ const burgerSlice = createSlice({
   },
   extraReducers: {
     [fetchIngredients.fulfilled]: (state, action) => {
-      state.ingredients = action.payload
+      const ingredients = action.payload
+      state.ingredients = {
+        salad: ingredients.salad,
+        bacon: ingredients.bacon,
+        cheese: ingredients.cheese,
+        meat: ingredients.meat,
+      }
     },
     [fetchIngredients.rejected]: (state) => {
       state.error = true
