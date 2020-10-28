@@ -6,24 +6,23 @@ import Burger from 'components/Burger/Burger'
 import BuildControls from 'components/Burger/BuildControls/BuildControls'
 import Modal from 'components/UI/Modal/Modal'
 import withErrorHandler from 'hoc/withErrorHandler/withErrorHandler'
-import {
-  addIngredient,
-  fetchIngredients,
-  removeIngredient,
-} from 'containers/BurgerBuilder/burgerSlice'
-import { connect, useDispatch } from 'react-redux'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { actions as burgerActions } from 'containers/BurgerBuilder/burgerSlice'
+import { actions as orderActions } from 'containers/Orders/ordersSlice'
 
 const BurgerBuilder = (props) => {
   const [purchasing, setPurchasing] = useState(false)
+  const fetchIngredients = props.fetchIngredients
 
-  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchIngredients())
-  }, [dispatch])
+    fetchIngredients()
+  }, [fetchIngredients])
 
   const orderNowHandler = () => setPurchasing(true)
   const purchaseCancelHandler = () => setPurchasing(false)
   const purchaseContinueHandler = () => {
+    props.initPurchase()
     props.history.push('/checkout')
   }
 
@@ -78,7 +77,15 @@ const mapStateToProps = (state) => ({
   error: state.burger.error,
 })
 
-const mapDispatchToProps = { addIngredient, removeIngredient }
+const mapDispatchToProps = (dispatch) => {
+  const {
+    addIngredient,
+    removeIngredient,
+    fetchIngredients,
+  } = bindActionCreators(burgerActions, dispatch)
+  const { initPurchase } = bindActionCreators(orderActions, dispatch)
+  return { addIngredient, removeIngredient, fetchIngredients, initPurchase }
+}
 
 export default connect(
   mapStateToProps,

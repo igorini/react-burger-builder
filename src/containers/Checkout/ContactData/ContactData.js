@@ -5,6 +5,9 @@ import Spinner from 'components/UI/Spinner/Spinner'
 import Input from 'components/UI/Input/Input'
 import Button from 'components/UI/Button/Button'
 import { connect } from 'react-redux'
+import withErrorHandler from 'hoc/withErrorHandler/withErrorHandler'
+import { bindActionCreators } from 'redux'
+import { actions } from 'containers/Orders/ordersSlice'
 
 const ContactData = (props) => {
   const [orderForm, setOrderForm] = useState({
@@ -88,12 +91,10 @@ const ContactData = (props) => {
       valid: true,
     },
   })
-  const [loading, setLoading] = useState(false)
   const [formValid, setFormValid] = useState(false)
 
   const orderHandler = (event) => {
     event.preventDefault()
-    setLoading(true)
     const formData = {}
     for (let formElementId in orderForm) {
       formData[formElementId] = orderForm[formElementId].value
@@ -103,15 +104,8 @@ const ContactData = (props) => {
       price: props.price,
       orderData: formData,
     }
-    axios
-      .post('/orders.json', order)
-      .then(() => {
-        setLoading(false)
-        props.history.push('/')
-      })
-      .catch(() => {
-        setLoading(false)
-      })
+
+    props.purchaseBurger(order)
   }
 
   const inputChangedHandler = (event, inputId) => {
@@ -152,7 +146,7 @@ const ContactData = (props) => {
     })
   }
 
-  const form = loading ? (
+  const form = props.loading ? (
     <Spinner />
   ) : (
     <form onSubmit={orderHandler}>
@@ -184,6 +178,15 @@ const ContactData = (props) => {
 const mapStateToProps = (state) => ({
   ingredients: state.burger.ingredients,
   price: state.burger.price,
+  loading: state.orders.loading,
 })
 
-export default connect(mapStateToProps)(ContactData)
+const mapDispatchToProps = (dispatch) => {
+  const { purchaseBurger } = bindActionCreators(actions, dispatch)
+  return { purchaseBurger }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withErrorHandler(ContactData, axios))

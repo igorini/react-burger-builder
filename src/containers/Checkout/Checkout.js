@@ -1,6 +1,6 @@
 import React from 'react'
 import CheckoutSummary from 'components/Order/CheckoutSummary/CheckoutSummary'
-import { Route } from 'react-router-dom'
+import { Redirect, Route } from 'react-router-dom'
 import ContactData from 'containers/Checkout/ContactData/ContactData'
 import { connect } from 'react-redux'
 
@@ -10,7 +10,7 @@ const Checkout = (props) => {
   const checkoutContinuedHandler = () =>
     props.history.replace('/checkout/contact-data')
 
-  return (
+  return props.ingredients && !props.purchased ? (
     <div>
       <CheckoutSummary
         ingredients={props.ingredients}
@@ -22,11 +22,14 @@ const Checkout = (props) => {
         component={ContactData}
       />
     </div>
+  ) : (
+    <Redirect to="/" />
   )
 }
 
 const mapStateToProps = (state) => ({
   ingredients: state.burger.ingredients,
+  purchased: state.orders.purchased,
 })
 
 export default connect(mapStateToProps)(Checkout)

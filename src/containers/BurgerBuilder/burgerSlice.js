@@ -7,6 +7,7 @@ const INGREDIENT_PRICES = {
   meat: 0.6,
   bacon: 0.4,
 }
+const initialPrice = 0.2
 
 const isPurchasable = (ingredients) => {
   const ingredientSum = Object.keys(ingredients)
@@ -15,7 +16,7 @@ const isPurchasable = (ingredients) => {
   return ingredientSum > 0
 }
 
-export const fetchIngredients = createAsyncThunk(
+const fetchIngredients = createAsyncThunk(
   'burger/fetchIngredients',
   async () => {
     const response = await axios.get('/ingredients.json')
@@ -26,8 +27,8 @@ export const fetchIngredients = createAsyncThunk(
 const burgerSlice = createSlice({
   name: 'burger',
   initialState: {
-    ingredients: {},
-    price: 0.2,
+    ingredients: null,
+    price: initialPrice,
     purchasable: false,
     error: false,
   },
@@ -60,6 +61,8 @@ const burgerSlice = createSlice({
         cheese: ingredients.cheese,
         meat: ingredients.meat,
       }
+      state.error = false
+      state.price = initialPrice
     },
     [fetchIngredients.rejected]: (state) => {
       state.error = true
@@ -67,6 +70,11 @@ const burgerSlice = createSlice({
   },
 })
 
-export const { addIngredient, removeIngredient } = burgerSlice.actions
+const { addIngredient, removeIngredient } = burgerSlice.actions
 
+export const actions = {
+  addIngredient,
+  removeIngredient,
+  fetchIngredients,
+}
 export default burgerSlice.reducer
