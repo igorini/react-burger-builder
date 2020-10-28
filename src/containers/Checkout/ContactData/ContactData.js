@@ -178,7 +178,7 @@ const ContactData = (props) => {
 const mapStateToProps = (state) => ({
   ingredients: state.burger.ingredients,
   price: state.burger.price,
-  loading: state.orders.loading,
+  loading: state.orders.purchaseLoading,
 })
 
 const mapDispatchToProps = (dispatch) => {
