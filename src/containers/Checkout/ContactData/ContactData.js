@@ -105,7 +105,7 @@ const ContactData = (props) => {
       orderData: formData,
     }
 
-    props.purchaseBurger(order)
+    props.purchaseBurger({ token: props.token, order: order })
   }
 
   const inputChangedHandler = (event, inputId) => {
@@ -179,6 +179,7 @@ const mapStateToProps = (state) => ({
   ingredients: state.burger.ingredients,
   price: state.burger.price,
   loading: state.orders.purchaseLoading,
+  token: state.auth.token,
 })
 
 const mapDispatchToProps = (dispatch) => {

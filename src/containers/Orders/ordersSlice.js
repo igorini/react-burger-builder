@@ -4,14 +4,14 @@ import _ from 'lodash'
 
 const purchaseBurger = createAsyncThunk(
   'orders/purchaseBurger',
-  async (payload) => {
-    const response = await axios.post('/orders.json', payload)
+  async ({ token, order }) => {
+    const response = await axios.post('/orders.json?auth=' + token, order)
     return response.data
   }
 )
 
-const fetchOrders = createAsyncThunk('orders/fetchOrders', async () => {
-  const response = await axios.get('/orders.json')
+const fetchOrders = createAsyncThunk('orders/fetchOrders', async (token) => {
+  const response = await axios.get('/orders.json?auth=' + token)
   return !_.isEmpty(response.data)
     ? Object.keys(response.data).map((i) => ({
         ...response.data[i],
