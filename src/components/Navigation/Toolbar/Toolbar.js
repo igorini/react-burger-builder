@@ -11,7 +11,7 @@ const Toolbar = (props) => (
       <Logo />
     </Styled.Logo>
     <Styled.DesktopOnly>
-      <NavigationItems />
+      <NavigationItems signedIn={props.signedIn} />
     </Styled.DesktopOnly>
   </Styled.Toolbar>
 )
