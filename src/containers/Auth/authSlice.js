@@ -1,6 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
+const LOCAL_STORAGE = {
+  TOKEN: 'token',
+  EXPIRATION_DATE: 'expirationDate',
+  USER_ID: 'userId',
+}
+
 const signUp = createAsyncThunk('auth/signUp', async ({ email, password }) => {
   const response = await axios.post(
     'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCCsPzmhsZ_CuSp8Lsyec3XLUNjJZyWhTQ',
@@ -16,6 +22,12 @@ const signIn = createAsyncThunk(
       'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCCsPzmhsZ_CuSp8Lsyec3XLUNjJZyWhTQ',
       { email: email, password: password, returnSecureToken: true }
     )
+    const expirationDate = new Date(
+      new Date().getTime() + response.data.expiresIn * 1000
+    )
+    localStorage.setItem(LOCAL_STORAGE.TOKEN, response.data.idToken)
+    localStorage.setItem(LOCAL_STORAGE.EXPIRATION_DATE, expirationDate)
+    localStorage.setItem(LOCAL_STORAGE.USER_ID, response.data.localId)
     thunkAPI.dispatch(logoutAfterMs(response.data.expiresIn * 1000))
     return response.data
   }
@@ -39,9 +51,34 @@ const authSlice = createSlice({
     loading: false,
   },
   reducers: {
+    initAuth(state) {
+      const token = localStorage.getItem(LOCAL_STORAGE.TOKEN)
+      if (!token) {
+        logout(state)
+      } else {
+        const expirationDate = new Date(
+          localStorage.getItem(LOCAL_STORAGE.EXPIRATION_DATE)
+        )
+        console.log('Expiration Date:', expirationDate, 'Now: ', new Date())
+        if (expirationDate <= new Date()) {
+          console.log('Token expired. Logging out')
+          logout(state)
+        } else {
+          state.token = token
+          state.userId = localStorage.getItem(LOCAL_STORAGE.USER_ID)
+          console.log(state)
+          logoutAfterMs(
+            (expirationDate.getTime() - new Date().getTime()) / 1000
+          )
+        }
+      }
+    },
     logout(state) {
       state.token = null
       state.userId = null
+      localStorage.removeItem(LOCAL_STORAGE.TOKEN)
+      localStorage.removeItem(LOCAL_STORAGE.EXPIRATION_DATE)
+      localStorage.removeItem(LOCAL_STORAGE.USER_ID)
     },
   },
   extraReducers: {
@@ -82,8 +119,8 @@ const authSlice = createSlice({
   },
 })
 
-const { logout } = authSlice.actions
+const { logout, initAuth } = authSlice.actions
 
-export const actions = { signUp, signIn, logout }
+export const actions = { signUp, signIn, logout, initAuth }
 
 export default authSlice.reducer
