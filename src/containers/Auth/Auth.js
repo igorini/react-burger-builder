@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import withErrorHandler from 'hoc/withErrorHandler/withErrorHandler'
 import axios from 'axios-orders'
 import Spinner from 'components/UI/Spinner/Spinner'
+import { Redirect } from 'react-router-dom'
 
 const Auth = (props) => {
   const [controls, setControls] = useState({
@@ -41,7 +42,7 @@ const Auth = (props) => {
     },
   })
 
-  const [isSignUp, setIsSignUp] = useState(true)
+  const [isSignUp, setIsSignUp] = useState(false)
 
   const inputChangedHandler = (event, controlName) => {
     const updatedControls = {
@@ -97,9 +98,13 @@ const Auth = (props) => {
   const switchAuthModeHandler = () => setIsSignUp(!isSignUp)
 
   const errorMessage = props.error ? <p>{props.error.message}</p> : null
+  const redirectIfSignedIn = props.signedIn ? (
+    <Redirect to={props.authRedirectPath} />
+  ) : null
 
   return !props.loading ? (
     <Styled.Auth>
+      {redirectIfSignedIn}
       {errorMessage}
       <form onSubmit={submitHandler}>
         {formElementsArray.map((formElement) => (
@@ -127,6 +132,8 @@ const Auth = (props) => {
 const mapStateToProps = (state) => ({
   loading: state.auth.loading,
   error: state.auth.error,
+  signedIn: state.auth.token !== null,
+  authRedirectPath: state.burger.authRedirectPath,
 })
 
 const mapDispatchToProps = (dispatch) => {

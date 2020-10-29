@@ -16,6 +16,8 @@ const isPurchasable = (ingredients) => {
   return ingredientSum > 0
 }
 
+const evalAuthRedirectPath = (purchasable) => (purchasable ? '/checkout' : '/')
+
 const fetchIngredients = createAsyncThunk(
   'burger/fetchIngredients',
   async () => {
@@ -24,6 +26,11 @@ const fetchIngredients = createAsyncThunk(
   }
 )
 
+const updatePurchasable = (state) => {
+  state.purchasable = isPurchasable(state.ingredients)
+  state.authRedirectPath = evalAuthRedirectPath(state.purchasable)
+}
+
 const burgerSlice = createSlice({
   name: 'burger',
   initialState: {
@@ -31,6 +38,7 @@ const burgerSlice = createSlice({
     price: initialPrice,
     purchasable: false,
     error: false,
+    authRedirectPath: '/',
   },
   reducers: {
     addIngredient(state, action) {
@@ -40,7 +48,7 @@ const burgerSlice = createSlice({
         [ingredientName]: state.ingredients[ingredientName] + 1,
       }
       state.price = state.price + INGREDIENT_PRICES[ingredientName]
-      state.purchasable = isPurchasable(state.ingredients)
+      updatePurchasable(state)
     },
     removeIngredient(state, action) {
       const ingredientName = action.payload
@@ -49,7 +57,7 @@ const burgerSlice = createSlice({
         [ingredientName]: state.ingredients[ingredientName] - 1,
       }
       state.price = state.price - INGREDIENT_PRICES[ingredientName]
-      state.purchasable = isPurchasable(state.ingredients)
+      updatePurchasable(state)
     },
   },
   extraReducers: {
@@ -63,6 +71,7 @@ const burgerSlice = createSlice({
       }
       state.error = false
       state.price = initialPrice
+      updatePurchasable(state)
     },
     [fetchIngredients.rejected]: (state) => {
       state.error = true

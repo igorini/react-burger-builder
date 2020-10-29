@@ -19,7 +19,8 @@ const BurgerBuilder = (props) => {
     fetchIngredients()
   }, [fetchIngredients])
 
-  const orderNowHandler = () => setPurchasing(true)
+  const orderNowHandler = () =>
+    props.signedIn ? setPurchasing(true) : props.history.push('/auth')
   const purchaseCancelHandler = () => setPurchasing(false)
   const purchaseContinueHandler = () => {
     props.initPurchase()
@@ -54,6 +55,7 @@ const BurgerBuilder = (props) => {
         price={props.price}
         purchasable={props.purchasable}
         orderNowClicked={orderNowHandler}
+        signedIn={props.signedIn}
       />
     </>
   ) : (
@@ -75,6 +77,7 @@ const mapStateToProps = (state) => ({
   price: state.burger.price,
   purchasable: state.burger.purchasable,
   error: state.burger.error,
+  signedIn: state.auth.token !== null,
 })
 
 const mapDispatchToProps = (dispatch) => {
