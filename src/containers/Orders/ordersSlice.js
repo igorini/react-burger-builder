@@ -59,7 +59,7 @@ const ordersSlice = createSlice({
   },
 })
 
-export const { initPurchase } = ordersSlice.actions
+const { initPurchase } = ordersSlice.actions
 
 export const actions = { purchaseBurger, fetchOrders, initPurchase }
 
