@@ -103,6 +103,7 @@ const ContactData = (props) => {
       ingredients: props.ingredients,
       price: props.price,
       orderData: formData,
+      userId: props.userId,
     }
 
     props.purchaseBurger({ token: props.token, order: order })
@@ -180,6 +181,7 @@ const mapStateToProps = (state) => ({
   price: state.burger.price,
   loading: state.orders.purchaseLoading,
   token: state.auth.token,
+  userId: state.auth.userId,
 })
 
 const mapDispatchToProps = (dispatch) => {

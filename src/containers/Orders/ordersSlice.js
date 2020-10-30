@@ -5,7 +5,10 @@ import _ from 'lodash'
 const purchaseBurger = createAsyncThunk(
   'orders/purchaseBurger',
   async ({ token, order }) => {
-    const response = await axios.post('/orders.json?auth=' + token, order)
+    const response = await axios.post(
+      `/orders.json?auth=${token}&orderBy="userId"&equalTo="${order.userId}"`,
+      order
+    )
     return response.data
   }
 )
