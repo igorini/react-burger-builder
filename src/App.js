@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react'
+import loadable from '@loadable/component'
 import Layout from 'hoc/Layout/Layout'
 import BurgerBuilder from 'containers/BurgerBuilder/BurgerBuilder'
-import Checkout from 'containers/Checkout/Checkout'
 import { Redirect, Route, Switch } from 'react-router-dom'
-import Orders from 'containers/Orders/Orders'
-import Auth from 'containers/Auth/Auth'
 import Logout from 'containers/Auth/Logout/Logout'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { actions } from 'containers/Auth/authSlice'
 import { withRouter } from 'react-router'
+
+const Checkout = loadable(() => import('containers/Checkout/Checkout'))
+const Orders = loadable(() => import('containers/Orders/Orders'))
+const Auth = loadable(() => import('containers/Auth/Auth'))
 
 const App = ({ initAuth, signedIn }) => {
   useEffect(() => {
