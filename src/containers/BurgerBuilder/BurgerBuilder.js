@@ -11,7 +11,7 @@ import { bindActionCreators } from 'redux'
 import { actions as burgerActions } from 'containers/BurgerBuilder/burgerSlice'
 import { actions as orderActions } from 'containers/Orders/ordersSlice'
 
-const BurgerBuilder = (props) => {
+export const BurgerBuilder = (props) => {
   const [purchasing, setPurchasing] = useState(false)
   const fetchIngredients = props.fetchIngredients
 
