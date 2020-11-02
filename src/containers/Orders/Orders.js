@@ -10,10 +10,11 @@ import Spinner from 'components/UI/Spinner/Spinner'
 const Orders = (props) => {
   const fetchOrders = props.fetchOrders
   const token = props.token
+  const userId = props.userId
 
   useEffect(() => {
-    fetchOrders(token)
-  }, [fetchOrders, token])
+    fetchOrders({ token: token, userId: userId })
+  }, [fetchOrders, token, userId])
 
   return !props.loading ? (
     <div>
@@ -34,6 +35,7 @@ const mapStateToProps = (state) => ({
   orders: state.orders.orders,
   loading: state.orders.ordersLoading,
   token: state.auth.token,
+  userId: state.auth.userId,
 })
 
 const mapDispatchToProps = (dispatch) => {
