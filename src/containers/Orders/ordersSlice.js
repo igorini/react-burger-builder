@@ -1,15 +1,15 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import axios from 'axios-orders'
 import _ from 'lodash'
 
 const purchaseBurger = createAsyncThunk(
   'orders/purchaseBurger',
   async ({ token, order }) => {
-    const response = await axios.post(
-      `/orders.json?auth=${token}&orderBy="userId"&equalTo="${order.userId}"`,
+    return await axios.post(
+      //`/orders.json?auth=${token}&orderBy="userId"&equalTo="${order.userId}"`,
+      `/orders.json?auth=${token}`,
       order
     )
-    return response.data
   }
 )
 
@@ -44,8 +44,9 @@ const ordersSlice = createSlice({
       state.purchaseLoading = false
       state.purchased = true
     },
-    [purchaseBurger.rejected]: (state) => {
+    [purchaseBurger.rejected]: (state, action) => {
       state.purchaseLoading = false
+      console.log(action)
     },
     [fetchOrders.pending]: (state) => {
       state.ordersLoading = true
