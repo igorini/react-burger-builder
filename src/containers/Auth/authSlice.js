@@ -59,14 +59,11 @@ const authSlice = createSlice({
         const expirationDate = new Date(
           localStorage.getItem(LOCAL_STORAGE.EXPIRATION_DATE)
         )
-        console.log('Expiration Date:', expirationDate, 'Now: ', new Date())
         if (expirationDate <= new Date()) {
-          console.log('Token expired. Logging out')
           logout(state)
         } else {
           state.token = token
           state.userId = localStorage.getItem(LOCAL_STORAGE.USER_ID)
-          console.log(state)
           logoutAfterMs(
             (expirationDate.getTime() - new Date().getTime()) / 1000
           )
@@ -83,36 +80,30 @@ const authSlice = createSlice({
   },
   extraReducers: {
     [signUp.pending]: (state) => {
-      console.log('Pending...')
       state.loading = true
       state.error = null
     },
     [signUp.fulfilled]: (state, action) => {
-      console.log(action.payload)
       state.loading = false
       state.error = null
       state.token = action.payload['idToken']
       state.userId = action.payload['localId']
     },
     [signUp.rejected]: (state, action) => {
-      console.log(action.error)
       state.loading = false
       state.error = action.error
     },
     [signIn.pending]: (state) => {
-      console.log('Pending...')
       state.loading = true
       state.error = null
     },
     [signIn.fulfilled]: (state, action) => {
-      console.log(action.payload)
       state.loading = false
       state.error = null
       state.token = action.payload['idToken']
       state.userId = action.payload['localId']
     },
     [signIn.rejected]: (state, action) => {
-      console.log(action.error)
       state.loading = false
       state.error = action.error
     },

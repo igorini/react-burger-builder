@@ -45,9 +45,8 @@ const ordersSlice = createSlice({
       state.purchaseLoading = false
       state.purchased = true
     },
-    [purchaseBurger.rejected]: (state, action) => {
+    [purchaseBurger.rejected]: (state) => {
       state.purchaseLoading = false
-      console.log(action)
     },
     [fetchOrders.pending]: (state) => {
       state.ordersLoading = true
