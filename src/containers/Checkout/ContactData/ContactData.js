@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import withErrorHandler from 'hoc/withErrorHandler/withErrorHandler'
 import { bindActionCreators } from 'redux'
 import { actions } from 'containers/Orders/ordersSlice'
+import { checkValidity } from 'utils/validation'
 
 const ContactData = (props) => {
   const [orderForm, setOrderForm] = useState({
@@ -122,21 +123,6 @@ const ContactData = (props) => {
 
     setFormValid(!Object.values(updatedOrderForm).some((el) => !el.valid))
     setOrderForm(updatedOrderForm)
-  }
-
-  const checkValidity = (value, rules) => {
-    let isValid = true
-    if (rules.required) {
-      isValid = isValid && value.trim() !== ''
-    }
-    if (rules.minLength) {
-      isValid = isValid && value.length >= rules.minLength
-    }
-    if (rules.maxLength) {
-      isValid = isValid && value.length <= rules.maxLength
-    }
-
-    return isValid
   }
 
   const formElementsArray = []

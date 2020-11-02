@@ -9,6 +9,7 @@ import withErrorHandler from 'hoc/withErrorHandler/withErrorHandler'
 import axios from 'axios-orders'
 import Spinner from 'components/UI/Spinner/Spinner'
 import { Redirect } from 'react-router-dom'
+import { checkValidity } from 'utils/validation'
 
 const Auth = (props) => {
   const [controls, setControls] = useState({
@@ -55,21 +56,6 @@ const Auth = (props) => {
       },
     }
     setControls(updatedControls)
-  }
-
-  const checkValidity = (value, rules) => {
-    let isValid = true
-    if (rules.required) {
-      isValid = isValid && value.trim() !== ''
-    }
-    if (rules.minLength) {
-      isValid = isValid && value.length >= rules.minLength
-    }
-    if (rules.maxLength) {
-      isValid = isValid && value.length <= rules.maxLength
-    }
-
-    return isValid
   }
 
   const formElementsArray = []
