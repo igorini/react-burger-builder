@@ -7,7 +7,10 @@ import NavigationItems from 'components/Navigation/NavigationItems/NavigationIte
 const SideDrawer = (props) => (
   <>
     <Backdrop show={props.open} clicked={props.closed} />
-    <Styled.SideDrawer drawerAction={props.open ? 'open' : 'close'}>
+    <Styled.SideDrawer
+      drawerAction={props.open ? 'open' : 'close'}
+      onClick={props.closed}
+    >
       <Styled.Logo>
         <Logo />
       </Styled.Logo>
