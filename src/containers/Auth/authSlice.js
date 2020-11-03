@@ -16,7 +16,7 @@ export const initialState = {
 
 const signUp = createAsyncThunk('auth/signUp', async ({ email, password }) => {
   const response = await axios.post(
-    'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCCsPzmhsZ_CuSp8Lsyec3XLUNjJZyWhTQ',
+    `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_AUTH_API_KEY}`,
     { email: email, password: password, returnSecureToken: true }
   )
   return response.data
@@ -26,7 +26,7 @@ export const signIn = createAsyncThunk(
   'auth/signIn',
   async ({ email, password }, thunkAPI) => {
     const response = await axios.post(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCCsPzmhsZ_CuSp8Lsyec3XLUNjJZyWhTQ',
+      `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_AUTH_API_KEY}`,
       { email: email, password: password, returnSecureToken: true }
     )
     const expirationDate = new Date(
