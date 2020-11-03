@@ -7,6 +7,13 @@ const LOCAL_STORAGE = {
   USER_ID: 'userId',
 }
 
+export const initialState = {
+  token: null,
+  userId: null,
+  error: null,
+  loading: false,
+}
+
 const signUp = createAsyncThunk('auth/signUp', async ({ email, password }) => {
   const response = await axios.post(
     'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCCsPzmhsZ_CuSp8Lsyec3XLUNjJZyWhTQ',
@@ -15,7 +22,7 @@ const signUp = createAsyncThunk('auth/signUp', async ({ email, password }) => {
   return response.data
 })
 
-const signIn = createAsyncThunk(
+export const signIn = createAsyncThunk(
   'auth/signIn',
   async ({ email, password }, thunkAPI) => {
     const response = await axios.post(
@@ -44,12 +51,7 @@ const logoutAfterMs = createAsyncThunk(
 
 const authSlice = createSlice({
   name: 'auth',
-  initialState: {
-    token: null,
-    userId: null,
-    error: null,
-    loading: false,
-  },
+  initialState: initialState,
   reducers: {
     initAuth(state) {
       const token = localStorage.getItem(LOCAL_STORAGE.TOKEN)
@@ -100,6 +102,7 @@ const authSlice = createSlice({
     [signIn.fulfilled]: (state, action) => {
       state.loading = false
       state.error = null
+      console.log(action)
       state.token = action.payload['idToken']
       state.userId = action.payload['localId']
     },
