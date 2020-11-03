@@ -4,8 +4,8 @@ import axios from 'axios-orders'
 const INGREDIENT_PRICES = {
   salad: 0.2,
   cheese: 0.3,
-  meat: 0.6,
-  bacon: 0.4,
+  meat: 0.7,
+  bacon: 0.5,
 }
 const initialPrice = 0.2
 
