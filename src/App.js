@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { actions } from 'containers/Auth/authSlice'
 import { withRouter } from 'react-router'
+import Helmet from 'react-helmet'
 
 const Checkout = loadable(() => import('containers/Checkout/Checkout'))
 const Orders = loadable(() => import('containers/Orders/Orders'))
@@ -36,6 +37,7 @@ const App = ({ initAuth, signedIn }) => {
 
   return (
     <div>
+      <Helmet title="Burger Builder" />
       <Layout>{routes}</Layout>
     </div>
   )
