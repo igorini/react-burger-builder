@@ -83,10 +83,10 @@ const Auth = (props) => {
 
   const switchAuthModeHandler = () => setIsSignUp(!isSignUp)
 
-  const errorMessage = props.error ? <p>{props.error.message}</p> : null
-  const redirectIfSignedIn = props.signedIn ? (
+  const errorMessage = props.error && <p>{props.error.message}</p>
+  const redirectIfSignedIn = props.signedIn && (
     <Redirect to={props.authRedirectPath} />
-  ) : null
+  )
 
   return !props.loading ? (
     <Styled.Auth>

@@ -7,7 +7,7 @@ const NavigationItems = ({ signedIn }) => (
     <NavigationItem link="/" exact>
       Burger Builder
     </NavigationItem>
-    {signedIn ? <NavigationItem link="/orders">Orders</NavigationItem> : null}
+    {signedIn && <NavigationItem link="/orders">Orders</NavigationItem>}
     {!signedIn ? (
       <NavigationItem link="/auth">Sign in</NavigationItem>
     ) : (
